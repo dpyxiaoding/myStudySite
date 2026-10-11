@@ -21,8 +21,8 @@ export const SECTIONS: Section[] = [
   { dir: 'python', title: 'Python 入门', indexLabel: '课程介绍' },
   {
     dir: 'agents',
-    title: '编程智能体对读',
-    indexLabel: '系列说明与目录',
+    title: '智能体',
+    indexLabel: '分类说明',
     groups: ['智能体内核', '协议与接入', '平台能力']
   },
   { dir: 'eng', title: '工程笔记', indexLabel: '目录' }

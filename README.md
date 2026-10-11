@@ -29,7 +29,7 @@
 │  │     └─ articles.data.mts  给目录表提供文章清单
 │  ├─ index.md                 首页
 │  ├─ python/                  Python 入门
-│  ├─ agents/                  编程智能体对读（figures/ 里是文章引用的示意图）
+│  ├─ agents/                  智能体（figures/ 里是文章引用的示意图）
 │  └─ eng/                     工程笔记（同上）
 ├─ .github/workflows/deploy.yml  推送到 main 后自动发布
 ├─ templates/                  新文章模板（不会发布到网站）

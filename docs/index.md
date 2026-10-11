@@ -15,8 +15,8 @@ features:
     details: 从变量、列表到推导式，每节配代码示例和小练习。
     link: /python/
     linkText: 进入课程
-  - title: 编程智能体对读
-    details: Claude Code、codex、deepseek-harness 三家同题对照，覆盖上下文、沙箱、子代理、MCP 等。
+  - title: 智能体
+    details: 编程智能体有哪些功能，Claude Code、codex、deepseek-harness 三家怎么实现、有何异同。
     link: /agents/
     linkText: 查看目录
   - title: 工程笔记

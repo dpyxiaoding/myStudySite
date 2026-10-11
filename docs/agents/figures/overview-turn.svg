@@ -1,0 +1,49 @@
+<!-- 智能体功能简介 · 一轮任务里各组功能在哪一步起作用。由 overview.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 330" role="img" aria-label="一轮任务的六步：接收输入、装配上下文、调用模型；模型要调工具时经过审批与隔离、执行工具、回填与记录，再回到装配上下文开始下一轮；模型不调工具时本轮结束">
+  <defs>
+    <marker id="ov-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+    </marker>
+    <marker id="ov-ar-hl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="var(--vp-c-brand-1)"></polygon>
+    </marker>
+  </defs>
+  <rect class="pane" x="20" y="24" width="200" height="104" rx="2"></rect>
+  <text x="120" y="54" text-anchor="middle" font-size="14">① 接收输入</text>
+  <text x="120" y="77" text-anchor="middle" font-size="10.5" opacity="0.72">用户输入、中途插话</text>
+  <text x="120" y="93" text-anchor="middle" font-size="10.5" opacity="0.72">定时触发、后台任务回报</text>
+  <text class="hl" x="120" y="114" text-anchor="middle" font-size="10.5">运行形态 · 任务编排</text>
+  <rect class="pane" x="260" y="24" width="200" height="104" rx="2"></rect>
+  <text x="360" y="54" text-anchor="middle" font-size="14">② 装配上下文</text>
+  <text x="360" y="77" text-anchor="middle" font-size="10.5" opacity="0.72">系统提示词、项目指令、记忆</text>
+  <text x="360" y="93" text-anchor="middle" font-size="10.5" opacity="0.72">快满时裁剪与压缩</text>
+  <text class="hl" x="360" y="114" text-anchor="middle" font-size="10.5">上下文与记忆</text>
+  <rect class="pane pane-us" x="500" y="24" width="200" height="104" rx="2"></rect>
+  <text class="hl" x="600" y="54" text-anchor="middle" font-size="14">③ 调用模型</text>
+  <text x="600" y="77" text-anchor="middle" font-size="10.5" opacity="0.72">发请求、出错重试</text>
+  <text x="600" y="93" text-anchor="middle" font-size="10.5" opacity="0.72">不调工具 → 本轮结束</text>
+  <text class="hl" x="600" y="114" text-anchor="middle" font-size="10.5">核心循环 · 工具调用机制</text>
+  <rect class="pane" x="500" y="202" width="200" height="104" rx="2"></rect>
+  <text x="600" y="232" text-anchor="middle" font-size="14">④ 审批与隔离</text>
+  <text x="600" y="255" text-anchor="middle" font-size="10.5" opacity="0.72">钩子拦截、权限判定、问人</text>
+  <text x="600" y="271" text-anchor="middle" font-size="10.5" opacity="0.72">在沙箱里限定读写和联网</text>
+  <text class="hl" x="600" y="292" text-anchor="middle" font-size="10.5">安全 · 扩展</text>
+  <rect class="pane" x="260" y="202" width="200" height="104" rx="2"></rect>
+  <text x="360" y="232" text-anchor="middle" font-size="14">⑤ 执行工具</text>
+  <text x="360" y="255" text-anchor="middle" font-size="10.5" opacity="0.72">文件、Shell、联网、MCP</text>
+  <text x="360" y="271" text-anchor="middle" font-size="10.5" opacity="0.72">或者派子代理去做</text>
+  <text class="hl" x="360" y="292" text-anchor="middle" font-size="10.5">工具 · 扩展 · 任务编排</text>
+  <rect class="pane" x="20" y="202" width="200" height="104" rx="2"></rect>
+  <text x="120" y="232" text-anchor="middle" font-size="14">⑥ 回填与记录</text>
+  <text x="120" y="255" text-anchor="middle" font-size="10.5" opacity="0.72">结果交回模型、会话存盘</text>
+  <text x="120" y="271" text-anchor="middle" font-size="10.5" opacity="0.72">记录用量和运行数据</text>
+  <text class="hl" x="120" y="292" text-anchor="middle" font-size="10.5">上下文与记忆 · 企业与运维</text>
+  <line x1="222" y1="76" x2="256" y2="76" stroke="currentColor" stroke-width="1.3" marker-end="url(#ov-ar)"></line>
+  <line x1="462" y1="76" x2="496" y2="76" stroke="currentColor" stroke-width="1.3" marker-end="url(#ov-ar)"></line>
+  <line x1="600" y1="130" x2="600" y2="198" stroke="currentColor" stroke-width="1.3" marker-end="url(#ov-ar)"></line>
+  <text x="608" y="168" font-size="10.5">要调工具</text>
+  <line x1="498" y1="254" x2="464" y2="254" stroke="currentColor" stroke-width="1.3" marker-end="url(#ov-ar)"></line>
+  <line x1="258" y1="254" x2="224" y2="254" stroke="currentColor" stroke-width="1.3" marker-end="url(#ov-ar)"></line>
+  <path class="hl" d="M120,200 V165 H360 V132" fill="none" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ov-ar-hl)"></path>
+  <text class="hl" x="240" y="159" text-anchor="middle" font-size="10.5">下一轮</text>
+</svg>
