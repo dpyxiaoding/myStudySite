@@ -1,0 +1,43 @@
+<!-- 接进来的工具算谁的 · 图 1。由 mcp.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 900 300" role="img" aria-labelledby="figtitle figdesc">
+  <title id="figtitle">三家怎么处理 server 自己声明的 readOnlyHint</title>
+  <desc id="figdesc">同一条来自 server 的自我声明，在三家客户端里分别被照单全收、取交集收紧、和完全忽略。</desc>
+  <g font-family="JetBrains Mono, monospace" font-size="13">
+    <!-- source -->
+    <rect x="8" y="118" width="188" height="64" rx="5" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand-1)" stroke-width="1.5"></rect>
+    <text x="102" y="143" text-anchor="middle" fill="var(--vp-c-brand-1)" font-size="11" letter-spacing="1.5">SERVER 自己说</text>
+    <text x="102" y="165" text-anchor="middle" fill="currentColor">readOnlyHint: true</text>
+    <!-- arrows -->
+    <g stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.55">
+      <path d="M196 138 L262 62"></path>
+      <path d="M196 150 L262 150"></path>
+      <path d="M196 162 L262 238"></path>
+    </g>
+    <!-- lane 1: codex -->
+    <rect x="262" y="30" width="252" height="64" rx="5" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)" stroke-width="1"></rect>
+    <text x="278" y="54" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.2">CODEX</text>
+    <text x="278" y="76" fill="currentColor" font-size="12">直接返回「不需要审批」</text>
+    <rect x="560" y="30" width="332" height="64" rx="5" fill="none" stroke="var(--vp-c-divider)" stroke-width="1" stroke-dasharray="3 3"></rect>
+    <text x="576" y="54" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.2">结果</text>
+    <text x="576" y="76" fill="currentColor" font-size="12">这把工具静默执行</text>
+    <!-- lane 2: claude code -->
+    <rect x="262" y="118" width="252" height="64" rx="5" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)" stroke-width="1"></rect>
+    <text x="278" y="142" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.2">CLAUDE CODE</text>
+    <text x="278" y="164" fill="currentColor" font-size="12">与本地表取交集 &amp;&amp; / ||</text>
+    <rect x="560" y="118" width="332" height="64" rx="5" fill="none" stroke="var(--vp-c-divider)" stroke-width="1" stroke-dasharray="3 3"></rect>
+    <text x="576" y="142" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.2">结果</text>
+    <text x="576" y="164" fill="currentColor" font-size="12">只能变严，且仍受权限规则管</text>
+    <!-- lane 3: dsh -->
+    <rect x="262" y="206" width="252" height="64" rx="5" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)" stroke-width="1"></rect>
+    <text x="278" y="230" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.2">DSH</text>
+    <text x="278" y="252" fill="currentColor" font-size="12">读都不读</text>
+    <rect x="560" y="206" width="332" height="64" rx="5" fill="none" stroke="var(--vp-c-divider)" stroke-width="1" stroke-dasharray="3 3"></rect>
+    <text x="576" y="230" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.2">结果</text>
+    <text x="576" y="252" fill="currentColor" font-size="12">出厂 allow，判断留给部署方</text>
+    <g stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.55">
+      <path d="M514 62 L554 62"></path>
+      <path d="M514 150 L554 150"></path>
+      <path d="M514 238 L554 238"></path>
+    </g>
+  </g>
+</svg>

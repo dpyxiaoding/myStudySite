@@ -1,0 +1,48 @@
+<!-- 沙箱与权限的三种解法 · 图 3。由 sandbox.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 700 430" role="img" aria-label="Claude Code 权限六步定序图：钩子、拒绝规则、询问规则、权限模式、允许规则、回调依次执行，拒绝与询问的出口全部排在允许出口之前">
+  <text x="0" y="14" class="dg-t-lab">调用进入</text>
+  <line x1="60" y1="24" x2="60" y2="392" class="dg-line dg-dash"></line>
+  <!-- step 1 -->
+  <rect x="60" y="30" width="250" height="46" rx="3" class="dg-box-em"></rect>
+  <text x="76" y="50" class="dg-t">① 钩子</text>
+  <text x="76" y="67" class="dg-t-sm">你自己的脚本，最先跑</text>
+  <line x1="310" y1="53" x2="392" y2="53" class="dg-deny" marker-end="url(#ah-deny)"></line>
+  <text x="400" y="50" class="dg-t-sm dg-f-deny">可以直接拒</text>
+  <text x="400" y="67" class="dg-t-lab">但它说「允许」不跳过后面的拒绝与询问</text>
+  <!-- step 2 -->
+  <rect x="60" y="90" width="250" height="46" rx="3" class="dg-box"></rect>
+  <text x="76" y="110" class="dg-t">② 拒绝规则</text>
+  <text x="76" y="127" class="dg-t-sm">deny</text>
+  <line x1="310" y1="113" x2="392" y2="113" class="dg-deny" marker-end="url(#ah-deny)"></line>
+  <text x="400" y="110" class="dg-t-sm dg-f-deny">命中即拦</text>
+  <text x="400" y="127" class="dg-t-lab">连「绕过一切权限」模式下也拦</text>
+  <!-- step 3 -->
+  <rect x="60" y="150" width="250" height="46" rx="3" class="dg-box"></rect>
+  <text x="76" y="170" class="dg-t">③ 询问规则</text>
+  <text x="76" y="187" class="dg-t-sm">ask</text>
+  <line x1="310" y1="173" x2="392" y2="173" class="dg-ask" marker-end="url(#ah-ask)"></line>
+  <text x="400" y="170" class="dg-t-sm dg-f-ask">命中就去问人</text>
+  <text x="400" y="187" class="dg-t-lab">即使下面有允许规则命中，也照问</text>
+  <!-- step 4 -->
+  <rect x="60" y="210" width="250" height="46" rx="3" class="dg-box"></rect>
+  <text x="76" y="230" class="dg-t">④ 权限模式</text>
+  <text x="76" y="247" class="dg-t-sm">accept edits / plan / bypass …</text>
+  <line x1="310" y1="233" x2="392" y2="233" class="dg-allow" marker-end="url(#ah-allow)"></line>
+  <text x="400" y="230" class="dg-t-sm dg-f-allow">某些模式在这里放行</text>
+  <text x="400" y="247" class="dg-t-lab">计划模式反而把写类工具强制送去问人</text>
+  <!-- step 5 -->
+  <rect x="60" y="270" width="250" height="46" rx="3" class="dg-box"></rect>
+  <text x="76" y="290" class="dg-t">⑤ 允许规则</text>
+  <text x="76" y="307" class="dg-t-sm">allow</text>
+  <line x1="310" y1="293" x2="392" y2="293" class="dg-allow" marker-end="url(#ah-allow)"></line>
+  <text x="400" y="290" class="dg-t-sm dg-f-allow">命中即批</text>
+  <text x="400" y="307" class="dg-t-lab">但批不了关键路径上的 rm / rmdir</text>
+  <!-- step 6 -->
+  <rect x="60" y="330" width="250" height="46" rx="3" class="dg-box"></rect>
+  <text x="76" y="350" class="dg-t">⑥ 回调</text>
+  <text x="76" y="367" class="dg-t-sm">canUseTool</text>
+  <line x1="310" y1="353" x2="392" y2="353" class="dg-ask" marker-end="url(#ah-ask)"></line>
+  <text x="400" y="350" class="dg-t-sm dg-f-ask">前面都没定就问这里</text>
+  <text x="400" y="367" class="dg-t-lab">「从不询问」模式在这一步直接变成拒绝</text>
+  <text x="0" y="412" class="dg-t-sm dg-f-steel">拒绝的出口全部排在允许的出口之前——这就是「越宽的模式推不翻越具体的拒绝」的实现方式。</text>
+</svg>

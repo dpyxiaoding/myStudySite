@@ -1,0 +1,28 @@
+<!-- 沙箱与权限的三种解法 · 图 2。由 sandbox.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 250" role="img" aria-label="Codex 工具执行四步图：审批、选沙箱档、试跑，被沙箱拒绝时换更宽的一档重跑，回环上标注不重新问人因为审批已按键缓存">
+  <rect x="0" y="40" width="120" height="48" rx="3" class="dg-box-em"></rect>
+  <text x="60" y="62" class="dg-t" text-anchor="middle">① 审批</text>
+  <text x="60" y="79" class="dg-t-sm" text-anchor="middle">钩子/模型/人</text>
+  <line x1="120" y1="64" x2="166" y2="64" class="dg-line" marker-end="url(#ah)"></line>
+  <rect x="166" y="40" width="130" height="48" rx="3" class="dg-box"></rect>
+  <text x="231" y="62" class="dg-t" text-anchor="middle">② 选沙箱档</text>
+  <text x="231" y="79" class="dg-t-sm" text-anchor="middle">这次尝试的全部参数</text>
+  <line x1="296" y1="64" x2="342" y2="64" class="dg-line" marker-end="url(#ah)"></line>
+  <rect x="342" y="40" width="120" height="48" rx="3" class="dg-box"></rect>
+  <text x="402" y="70" class="dg-t" text-anchor="middle">③ 试跑</text>
+  <line x1="462" y1="64" x2="520" y2="64" class="dg-allow" marker-end="url(#ah-allow)"></line>
+  <text x="491" y="56" class="dg-t-lab" text-anchor="middle">成功</text>
+  <rect x="520" y="40" width="100" height="48" rx="3" class="dg-box"></rect>
+  <text x="570" y="70" class="dg-t" text-anchor="middle">结果</text>
+  <path d="M 402 88 L 402 128 L 300 128" class="dg-deny" marker-end="url(#ah-deny)"></path>
+  <text x="410" y="122" class="dg-t-sm dg-f-deny">被沙箱拒了</text>
+  <rect x="150" y="106" width="150" height="44" rx="3" class="dg-box"></rect>
+  <text x="225" y="133" class="dg-t" text-anchor="middle">④ 换更宽的一档</text>
+  <path d="M 150 128 L 100 128 L 100 64 L 160 64" class="dg-line dg-dash" marker-end="url(#ah)"></path>
+  <text x="0" y="112" class="dg-t-sm">回到 ②</text>
+  <text x="0" y="128" class="dg-t-sm">重跑一次</text>
+  <line x1="0" y1="178" x2="720" y2="178" class="dg-rule"></line>
+  <text x="0" y="202" class="dg-t-sm dg-f-steel">这条回环上没有「再问一次人」——</text>
+  <text x="0" y="222" class="dg-t-sm">因为 ① 的批准是<tspan class="dg-f-steel">按键缓存</tspan>的：一次改五个文件就是五个键，</text>
+  <text x="0" y="240" class="dg-t-sm">选「本会话批准」时逐键写入，之后任何子集都能命中。</text>
+</svg>

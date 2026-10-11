@@ -1,0 +1,48 @@
+<!-- 扩展面三家对读 · 图 1。由 extensions.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 1000 300" role="img" aria-label="一条工具调用管线上有七个位置：入参封存、pre-execute 策略、guard 终局、execute 环绕、真正执行、post-execute 变换、finalize 与 result 观察。外部 hook 协议只够得到其中两个位置——PreToolUse 与 PostToolUse；其余五个位置只有同进程的原生插件能到，而它们各自的权力被刻意分成了拒、包、改、看四档">
+  <defs>
+    <marker id="ax" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,0 10,5 0,10" fill="currentColor"></polygon>
+    </marker>
+    <marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon class="hl-fill" points="0,0 10,5 0,10"></polygon>
+    </marker>
+  </defs>
+  <text class="hl-fill" x="500" y="26" text-anchor="middle" font-size="12" font-weight="600">外部 hook 协议够得到的位置</text>
+  <rect class="hl" x="154" y="44" width="118" height="30" rx="4" fill="none" stroke-width="1.6"></rect>
+  <text x="213" y="64" text-anchor="middle" font-size="11.5" fill="currentColor">PreToolUse</text>
+  <rect class="hl" x="574" y="44" width="118" height="30" rx="4" fill="none" stroke-width="1.6"></rect>
+  <text x="633" y="64" text-anchor="middle" font-size="11.5" fill="currentColor">PostToolUse</text>
+  <line class="hl" x1="272" y1="59" x2="574" y2="59" stroke-width="1.2" stroke-dasharray="5 4"></line>
+  <line class="hl" x1="213" y1="74" x2="213" y2="156" stroke-width="1.6" marker-end="url(#ay)"></line>
+  <line class="hl" x1="633" y1="74" x2="633" y2="156" stroke-width="1.6" marker-end="url(#ay)"></line>
+  <rect x="14" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="73" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">入参封存</text>
+  <rect x="154" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="213" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">pre-execute</text>
+  <rect x="294" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="353" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">guard</text>
+  <rect x="434" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="493" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">execute 环绕</text>
+  <rect x="574" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="633" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">post-execute</text>
+  <rect x="714" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="773" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">finalize</text>
+  <rect x="854" y="160" width="118" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 3"></rect>
+  <text x="913" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">result</text>
+  <line x1="132" y1="185" x2="148" y2="185" stroke="currentColor" stroke-width="1.4" marker-end="url(#ax)"></line>
+  <line x1="272" y1="185" x2="288" y2="185" stroke="currentColor" stroke-width="1.4" marker-end="url(#ax)"></line>
+  <line x1="412" y1="185" x2="428" y2="185" stroke="currentColor" stroke-width="1.4" marker-end="url(#ax)"></line>
+  <line x1="552" y1="185" x2="568" y2="185" stroke="currentColor" stroke-width="1.4" marker-end="url(#ax)"></line>
+  <line x1="692" y1="185" x2="708" y2="185" stroke="currentColor" stroke-width="1.4" marker-end="url(#ax)"></line>
+  <line x1="832" y1="185" x2="848" y2="185" stroke="currentColor" stroke-width="1.4" marker-end="url(#ax)"></line>
+  <text x="73" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">身份从此不可变</text>
+  <text x="213" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">拒 / 问 / 放行</text>
+  <text x="353" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">只能拒</text>
+  <text x="493" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">只能包，不能删 signal</text>
+  <text x="633" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">改内容或换值</text>
+  <text x="773" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">只改 content</text>
+  <text x="913" y="236" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.72">只能看</text>
+  <line x1="14" y1="266" x2="972" y2="266" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
+  <text x="14" y="288" font-size="11" fill="currentColor" opacity="0.62">↑ 每个位置一种返回类型：能拒的不能改，能改的不能拒，能看的什么都不能动</text>
+</svg>

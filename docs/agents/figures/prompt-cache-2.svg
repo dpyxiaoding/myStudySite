@@ -1,0 +1,30 @@
+<!-- 别动前缀 · 图 2。由 prompt-cache.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 880 226" role="img" aria-label="历史是只追加的：规则的旧版本仍然留在上下文里，所以中途更新时追加的新片段必须自带一句作废声明，否则模型会同时读到两份互相矛盾的规则">
+  <defs>
+    <marker id="pa2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <text x="14" y="20" font-family="DM Mono, monospace" font-size="11" fill="currentColor" opacity="0.65">模型这一轮读到的全部内容 —— 只能追加，改不了已经写下的</text>
+  <!-- 历史带 -->
+  <rect x="14" y="36" width="176" height="44" rx="3" class="k-miss" fill="none" stroke-width="1.5"></rect>
+  <text x="26" y="54" font-family="DM Mono, monospace" font-size="11" class="f-miss">规则 v1</text>
+  <text x="26" y="70" font-family="DM Mono, monospace" font-size="10" fill="currentColor" opacity="0.7">在前缀里 · 动它就废缓存</text>
+  <rect x="198" y="36" width="104" height="44" rx="3" fill="currentColor" opacity="0.07"></rect>
+  <text x="250" y="63" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="currentColor">对话若干轮</text>
+  <rect x="310" y="36" width="104" height="44" rx="3" fill="currentColor" opacity="0.07"></rect>
+  <text x="362" y="63" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="currentColor">工具调用</text>
+  <!-- 事件 -->
+  <line x1="440" y1="120" x2="440" y2="84" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa2)"></line>
+  <text x="440" y="140" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="currentColor">用户改了 AGENTS.md</text>
+  <!-- 新片段 -->
+  <rect x="422" y="36" width="330" height="44" rx="3" class="k-hit" fill="none" stroke-width="1.8"></rect>
+  <text x="434" y="54" font-family="DM Mono, monospace" font-size="11" class="f-hit">规则 v2 ＋「以上全部作废」</text>
+  <text x="434" y="70" font-family="DM Mono, monospace" font-size="10" fill="currentColor" opacity="0.7">追加在断点之下 · 前缀没动 · 缓存仍命中</text>
+  <rect x="760" y="36" width="96" height="44" rx="3" fill="currentColor" opacity="0.07"></rect>
+  <text x="808" y="63" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="currentColor">这一轮</text>
+  <!-- 结论 -->
+  <line x1="14" y1="164" x2="856" y2="164" stroke="currentColor" stroke-width="1" opacity="0.25"></line>
+  <text x="14" y="188" font-family="DM Mono, monospace" font-size="11.5" class="f-miss">v1 还在上面，模型照样读得到。</text>
+  <text x="14" y="208" font-family="DM Mono, monospace" font-size="11.5" fill="currentColor">所以那句作废声明不是礼貌用语，是这条纪律的账单——「什么都不说」等于「旧的还算数」。</text>
+</svg>

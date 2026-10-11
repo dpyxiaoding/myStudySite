@@ -1,0 +1,63 @@
+<!-- 沙箱与权限的三种解法 · 图 1。由 sandbox.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 760 400" role="img" aria-label="对比图：先判后给的路径把判定器放在执行之前，漏判就直接越界；先试后问的路径让命令在沙箱里跑，被拒之后由模型带理由申请更宽的沙箱，那次申请才弹审批框">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+    </marker>
+    <marker id="ah-deny" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--vp-c-danger-1)"></path>
+    </marker>
+    <marker id="ah-allow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--vp-c-green-1)"></path>
+    </marker>
+    <marker id="ah-ask" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--vp-c-warning-1)"></path>
+    </marker>
+  </defs>
+  <!-- 上半：先判后给 -->
+  <text x="0" y="16" class="dg-t-head">答法 A：先判后给（事前判定）</text>
+  <text x="0" y="34" class="dg-t-lab">Claude Code · 本仓 command-risk.ts</text>
+  <rect x="0" y="52" width="118" height="44" rx="3" class="dg-box"></rect>
+  <text x="59" y="79" class="dg-t" text-anchor="middle">模型的命令</text>
+  <line x1="118" y1="74" x2="166" y2="74" class="dg-line" marker-end="url(#ah)"></line>
+  <rect x="166" y="46" width="150" height="56" rx="3" class="dg-box-em"></rect>
+  <text x="241" y="70" class="dg-t" text-anchor="middle">判定器</text>
+  <text x="241" y="88" class="dg-t-sm" text-anchor="middle">读命令字面猜风险</text>
+  <line x1="316" y1="74" x2="366" y2="74" class="dg-allow" marker-end="url(#ah-allow)"></line>
+  <text x="341" y="66" class="dg-t-lab" text-anchor="middle">放行</text>
+  <rect x="366" y="52" width="112" height="44" rx="3" class="dg-box"></rect>
+  <text x="422" y="79" class="dg-t" text-anchor="middle">直接执行</text>
+  <path d="M 241 102 L 241 132 L 356 132" class="dg-ask" marker-end="url(#ah-ask)"></path>
+  <text x="252" y="126" class="dg-t-lab">判不准 → 问人</text>
+  <rect x="356" y="112" width="90" height="38" rx="3" class="dg-box"></rect>
+  <text x="401" y="136" class="dg-t" text-anchor="middle">审批框</text>
+  <path d="M 316 60 L 560 60 L 560 74 L 610 74" class="dg-deny dg-dash" marker-end="url(#ah-deny)"></path>
+  <text x="612" y="62" class="dg-t-sm dg-f-deny">漏判的那一条</text>
+  <text x="612" y="80" class="dg-t-sm dg-f-deny">直接就是越界</text>
+  <text x="612" y="98" class="dg-t-lab">没有第二道网</text>
+  <line x1="0" y1="182" x2="760" y2="182" class="dg-rule"></line>
+  <!-- 下半：先试后问 -->
+  <text x="0" y="214" class="dg-t-head">答法 B：先试后问（事后拦截）</text>
+  <text x="0" y="232" class="dg-t-lab">DeepSeek Harness · Codex 的 shell-escalation</text>
+  <rect x="0" y="250" width="118" height="44" rx="3" class="dg-box"></rect>
+  <text x="59" y="277" class="dg-t" text-anchor="middle">模型的命令</text>
+  <line x1="118" y1="272" x2="166" y2="272" class="dg-line" marker-end="url(#ah)"></line>
+  <text x="142" y="264" class="dg-t-lab" text-anchor="middle">不判</text>
+  <rect x="166" y="244" width="150" height="56" rx="3" class="dg-box-em"></rect>
+  <text x="241" y="268" class="dg-t" text-anchor="middle">沙箱里直接跑</text>
+  <text x="241" y="286" class="dg-t-sm" text-anchor="middle">操作系统上的锁</text>
+  <line x1="316" y1="272" x2="366" y2="272" class="dg-allow" marker-end="url(#ah-allow)"></line>
+  <text x="341" y="264" class="dg-t-lab" text-anchor="middle">没撞墙</text>
+  <rect x="366" y="250" width="112" height="44" rx="3" class="dg-box"></rect>
+  <text x="422" y="277" class="dg-t" text-anchor="middle">结果照常</text>
+  <path d="M 241 300 L 241 330 L 296 330" class="dg-deny" marker-end="url(#ah-deny)"></path>
+  <text x="252" y="324" class="dg-t-lab">撞墙了</text>
+  <rect x="296" y="310" width="150" height="40" rx="3" class="dg-box"></rect>
+  <text x="371" y="335" class="dg-t" text-anchor="middle">带理由申请更宽</text>
+  <line x1="446" y1="330" x2="490" y2="330" class="dg-ask" marker-end="url(#ah-ask)"></line>
+  <rect x="490" y="310" width="90" height="40" rx="3" class="dg-box"></rect>
+  <text x="535" y="335" class="dg-t" text-anchor="middle">审批框</text>
+  <path d="M 535 310 L 535 272 L 480 272" class="dg-allow dg-dash" marker-end="url(#ah-allow)"></path>
+  <text x="600" y="300" class="dg-t-sm">批了就换一档</text>
+  <text x="600" y="318" class="dg-t-sm">重跑同一条命令</text>
+</svg>

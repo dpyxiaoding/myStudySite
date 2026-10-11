@@ -1,0 +1,54 @@
+<!-- 文件工具的语义三家对读 · 图 1。由 file-tools.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 740 300" role="img" aria-label="两种定位方式的对照：字符串锚点只有一档精确匹配，命中零次或多次都直接失败；补丁上下文有三档降级匹配，精确、忽略尾部空白、忽略首尾空白，任一档命中即应用">
+  <defs>
+    <marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+    </marker>
+    <marker id="fb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="hl-fill" d="M 0 0 L 10 5 L 0 10 z"></path>
+    </marker>
+  </defs>
+  <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor">
+    <!-- 左：字符串锚点 -->
+    <text x="0" y="14" font-size="11.5" font-weight="700">字符串锚点</text>
+    <text x="0" y="29" font-size="9.5" opacity=".65">Claude Code · dsh · 本仓</text>
+    <rect x="0" y="44" width="130" height="30" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"></rect>
+    <text x="12" y="63" font-size="10">old_string 精确比对</text>
+    <line x1="65" y1="74" x2="65" y2="102" stroke="currentColor" stroke-width="1.2" marker-end="url(#fa)"></line>
+    <text x="74" y="92" font-size="9.5" opacity=".7">数一数命中几次</text>
+    <rect x="0" y="106" width="130" height="26" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"></rect>
+    <text x="34" y="123" font-size="10">恰好一次</text>
+    <rect class="hl" x="0" y="140" width="130" height="26" fill="none" stroke-width="1.5" rx="3"></rect>
+    <text class="hl-fill" x="30" y="157" font-size="10">零次 → 失败</text>
+    <rect class="hl" x="0" y="174" width="130" height="26" fill="none" stroke-width="1.5" rx="3"></rect>
+    <text class="hl-fill" x="20" y="191" font-size="10">多次 → 另一种失败</text>
+    <line x1="130" y1="119" x2="162" y2="119" stroke="currentColor" stroke-width="1.2" marker-end="url(#fa)"></line>
+    <text x="168" y="123" font-size="10">应用</text>
+    <text x="0" y="222" font-size="9.5" opacity=".7">除非显式传 replace_all</text>
+    <text x="0" y="238" font-size="9.5" opacity=".7">两种失败给模型的话不一样：</text>
+    <text x="0" y="253" font-size="9.5" opacity=".7">一个要它换锚点，一个要它多抄几行</text>
+    <!-- 分隔 -->
+    <line x1="300" y1="40" x2="300" y2="266" stroke="currentColor" stroke-width="1" opacity=".22"></line>
+    <!-- 右：补丁上下文 -->
+    <text x="330" y="14" font-size="11.5" font-weight="700">补丁上下文</text>
+    <text x="330" y="29" font-size="9.5" opacity=".65">codex</text>
+    <rect x="330" y="44" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"></rect>
+    <text x="342" y="61" font-size="10">① 逐行精确相等</text>
+    <line class="hl" x1="430" y1="70" x2="430" y2="84" stroke-width="1.2" marker-end="url(#fb)"></line>
+    <text class="hl-fill" x="540" y="61" font-size="9.5">不中就降一档</text>
+    <rect x="330" y="88" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"></rect>
+    <text x="342" y="105" font-size="10">② 忽略行尾空白</text>
+    <line class="hl" x1="430" y1="114" x2="430" y2="128" stroke-width="1.2" marker-end="url(#fb)"></line>
+    <rect x="330" y="132" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"></rect>
+    <text x="342" y="149" font-size="10">③ 忽略首尾空白</text>
+    <line class="hl" x1="430" y1="158" x2="430" y2="172" stroke-width="1.2" marker-end="url(#fb)"></line>
+    <rect class="hl" x="330" y="176" width="200" height="26" fill="none" stroke-width="1.5" rx="3"></rect>
+    <text class="hl-fill" x="342" y="193" font-size="10">三档都不中 → 失败</text>
+    <text x="546" y="105" font-size="9.5" opacity=".7">任一档命中</text>
+    <text x="546" y="120" font-size="9.5" opacity=".7">即取首个位置</text>
+    <line x1="530" y1="101" x2="542" y2="101" stroke="currentColor" stroke-width="1.2" marker-end="url(#fa)"></line>
+    <text x="330" y="228" font-size="9.5" opacity=".7">带 eof 标记的块先从文件末尾试起</text>
+    <text x="330" y="243" font-size="9.5" opacity=".7">空 pattern 视为无操作命中</text>
+    <text x="330" y="258" font-size="9.5" opacity=".7">pattern 比文件长直接返回未命中</text>
+  </g>
+</svg>

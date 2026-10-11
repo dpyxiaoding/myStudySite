@@ -1,0 +1,44 @@
+<!-- 编排层三家对读 · 同一个功能的三个接入点。由 orchestration.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 900 340" role="img" aria-label="同一个「跑到条件满足为止」的功能，三家接在回合循环的三个不同位置：deepseek-harness 在循环入口合成一条被准入的用户轮次，codex 在轮次结束后的空闲派发处注入内部上下文片段，Claude Code 拦住结束这个动作本身">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,0 10,5 0,10" fill="currentColor"></polygon>
+    </marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,0 10,5 0,10" class="hl-fill"></polygon>
+    </marker>
+  </defs>
+  <!-- loop -->
+  <rect x="16" y="140" width="126" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="79" y="168" text-anchor="middle" font-size="13" fill="currentColor">用户消息</text>
+  <rect x="196" y="140" width="132" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="262" y="168" text-anchor="middle" font-size="13" fill="currentColor">装配请求</text>
+  <rect x="382" y="140" width="132" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="448" y="168" text-anchor="middle" font-size="13" fill="currentColor">模型调用</text>
+  <rect x="568" y="140" width="132" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+  <text x="634" y="168" text-anchor="middle" font-size="13" fill="currentColor">工具批次</text>
+  <rect x="768" y="140" width="116" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 3"></rect>
+  <text x="826" y="168" text-anchor="middle" font-size="13" fill="currentColor">这一轮结束</text>
+  <line x1="142" y1="163" x2="190" y2="163" stroke="currentColor" stroke-width="1.4" marker-end="url(#a1)"></line>
+  <line x1="328" y1="163" x2="376" y2="163" stroke="currentColor" stroke-width="1.4" marker-end="url(#a1)"></line>
+  <line x1="514" y1="163" x2="562" y2="163" stroke="currentColor" stroke-width="1.4" marker-end="url(#a1)"></line>
+  <line x1="700" y1="163" x2="762" y2="163" stroke="currentColor" stroke-width="1.4" marker-end="url(#a1)"></line>
+  <!-- step return path -->
+  <path d="M 634 186 L 634 224 L 262 224 L 262 186" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#a1)"></path>
+  <text x="448" y="242" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">下一步</text>
+  <!-- tap A: dsh -->
+  <rect x="16" y="36" width="262" height="54" rx="4" fill="none" class="hl" stroke-width="1.6"></rect>
+  <text x="30" y="58" font-size="12" fill="currentColor" font-weight="600">deepseek-harness</text>
+  <text x="30" y="77" font-size="11.5" fill="currentColor" opacity="0.8">合成一条被准入的 user 轮次</text>
+  <line x1="79" y1="90" x2="79" y2="134" class="hl" stroke-width="1.6" marker-end="url(#a2)"></line>
+  <!-- tap C: claude code -->
+  <rect x="600" y="36" width="284" height="54" rx="4" fill="none" class="hl" stroke-width="1.6"></rect>
+  <text x="614" y="58" font-size="12" fill="currentColor" font-weight="600">Claude Code</text>
+  <text x="614" y="77" font-size="11.5" fill="currentColor" opacity="0.8">Stop 钩子拦住「结束」，交回条件</text>
+  <line x1="826" y1="90" x2="826" y2="134" class="hl" stroke-width="1.6" marker-end="url(#a2)"></line>
+  <!-- tap B: codex -->
+  <rect x="300" y="270" width="300" height="54" rx="4" fill="none" class="hl" stroke-width="1.6"></rect>
+  <text x="314" y="292" font-size="12" fill="currentColor" font-weight="600">codex</text>
+  <text x="314" y="311" font-size="11.5" fill="currentColor" opacity="0.8">线程空闲时注入一段内部上下文片段</text>
+  <line x1="380" y1="270" x2="380" y2="230" class="hl" stroke-width="1.6" marker-end="url(#a2)"></line>
+</svg>

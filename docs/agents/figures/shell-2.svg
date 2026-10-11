@@ -1,0 +1,51 @@
+<!-- 命令跑起来之后 · 图 2。由 shell.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 880 300" role="img" aria-label="五条命令在同一条时间轴上跑：Claude Code 在 120 秒转后台并继续，codex 在 10 秒交回 session id 而进程不停，deepseek-harness 一次性在 120 秒杀掉进程组、持久档在 300 秒重置整个 shell，本仓在 120 秒中止并停掉整个 Run">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <!-- 时间轴 -->
+  <line x1="188" y1="34" x2="852" y2="34" stroke="currentColor" stroke-width="1" opacity="0.35"></line>
+  <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.7" text-anchor="middle">
+    <text x="196" y="24">0</text>
+    <text x="262" y="24">10s</text>
+    <text x="474" y="24">120s</text>
+    <text x="652" y="24">300s</text>
+    <text x="840" y="24">继续跑</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1" opacity="0.25">
+    <line x1="196" y1="30" x2="196" y2="286"></line>
+    <line x1="262" y1="30" x2="262" y2="286" stroke-dasharray="2 4"></line>
+    <line x1="474" y1="30" x2="474" y2="286"></line>
+    <line x1="652" y1="30" x2="652" y2="286" stroke-dasharray="2 4"></line>
+  </g>
+  <g font-family="IBM Plex Mono, monospace" font-size="11.5">
+    <!-- Claude Code -->
+    <text x="14" y="66" class="f-a">Claude Code</text>
+    <rect x="196" y="54" width="278" height="16" rx="2" class="f-a" opacity="0.30"></rect>
+    <line x1="474" y1="62" x2="836" y2="62" class="k-a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar2)"></line>
+    <text x="482" y="50" class="f-a" font-size="10.5">转后台 · 输出写文件 · 完成时推送通知</text>
+    <!-- codex -->
+    <text x="14" y="114" class="f-b">codex</text>
+    <rect x="196" y="102" width="66" height="16" rx="2" class="f-b" opacity="0.30"></rect>
+    <line x1="262" y1="110" x2="836" y2="110" class="k-b" stroke-width="1.6" marker-end="url(#ar2)"></line>
+    <text x="270" y="98" class="f-b" font-size="10.5">交回 session_id，进程不停 · write_stdin 空写即轮询</text>
+    <!-- dsh 一次性 -->
+    <text x="14" y="162" class="f-c">dsh 一次性</text>
+    <rect x="196" y="150" width="278" height="16" rx="2" class="f-c" opacity="0.30"></rect>
+    <line x1="474" y1="142" x2="474" y2="174" class="k-c" stroke-width="2.4"></line>
+    <text x="482" y="164" class="f-c" font-size="10.5">SIGTERM → 3s → SIGKILL（整个进程组）</text>
+    <!-- dsh 持久 -->
+    <text x="14" y="210" class="f-c">dsh 持久</text>
+    <rect x="196" y="198" width="456" height="16" rx="2" class="f-c" opacity="0.30"></rect>
+    <line x1="652" y1="190" x2="652" y2="222" class="k-c" stroke-width="2.4"></line>
+    <text x="660" y="212" class="f-c" font-size="10.5">整个 shell 重置</text>
+    <!-- 本仓 -->
+    <text x="14" y="258" class="f-d">本仓</text>
+    <rect x="196" y="246" width="278" height="16" rx="2" class="f-d" opacity="0.32"></rect>
+    <line x1="474" y1="238" x2="474" y2="270" class="k-d" stroke-width="2.4"></line>
+    <text x="482" y="260" class="f-d" font-size="10.5">中止 → unknown → 停掉整个 Run</text>
+  </g>
+  <text x="196" y="292" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity="0.55">横轴不按比例</text>
+</svg>

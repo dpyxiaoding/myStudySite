@@ -1,0 +1,45 @@
+<!-- 别动前缀 · 图 1。由 prompt-cache.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 880 330" role="img" aria-label="一次请求的分层：工具定义与系统提示词构成缓存前缀，缓存断点画在它下面，所有会变的东西——权限档、工具目录变化、技能正文、计划模式指令——都追加在断点之下，四家用不同的词指同一件事">
+  <defs>
+    <marker id="pa1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <text x="14" y="20" font-family="DM Mono, monospace" font-size="11" fill="currentColor" opacity="0.65">一次请求，从上到下</text>
+  <!-- 前缀区 -->
+  <rect x="14" y="32" width="470" height="112" rx="4" class="k-hit" fill="none" stroke-width="1.6"></rect>
+  <text x="28" y="52" font-family="DM Mono, monospace" font-size="11" class="f-hit">缓 存 前 缀 —— 逐字节比对，命中就不要钱</text>
+  <rect x="28" y="62" width="442" height="32" rx="3" fill="currentColor" opacity="0.07"></rect>
+  <text x="42" y="82" font-family="DM Mono, monospace" font-size="12" fill="currentColor">tools —— 工具定义（名字排序、会话中途不许增删）</text>
+  <rect x="28" y="100" width="442" height="32" rx="3" fill="currentColor" opacity="0.07"></rect>
+  <text x="42" y="120" font-family="DM Mono, monospace" font-size="12" fill="currentColor">system —— harness 身份 · 部署人格 · 项目规则</text>
+  <!-- 断点 -->
+  <line x1="14" y1="158" x2="484" y2="158" class="k-miss" stroke-width="2.2" stroke-dasharray="7 4"></line>
+  <text x="28" y="176" font-family="DM Mono, monospace" font-size="11.5" class="f-miss">缓存断点 —— 这条线以上变一个字节，以下全部重算</text>
+  <!-- 追加区 -->
+  <rect x="14" y="188" width="470" height="126" rx="4" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.45"></rect>
+  <text x="28" y="208" font-family="DM Mono, monospace" font-size="11" fill="currentColor" opacity="0.7">messages —— 只追加，永不回头改</text>
+  <rect x="28" y="218" width="442" height="26" rx="3" fill="currentColor" opacity="0.05"></rect>
+  <text x="42" y="235" font-family="DM Mono, monospace" font-size="11.5" fill="currentColor">权限档 · 当前时间 · 工具目录变化</text>
+  <rect x="28" y="250" width="442" height="26" rx="3" fill="currentColor" opacity="0.05"></rect>
+  <text x="42" y="267" font-family="DM Mono, monospace" font-size="11.5" fill="currentColor">技能正文 · 计划模式指令 · 审批结果</text>
+  <rect x="28" y="282" width="442" height="24" rx="3" fill="currentColor" opacity="0.05"></rect>
+  <text x="42" y="298" font-family="DM Mono, monospace" font-size="11.5" fill="currentColor">这一轮的用户消息与工具结果</text>
+  <!-- 四家的叫法 -->
+  <line x1="500" y1="200" x2="530" y2="200" stroke="currentColor" stroke-width="1.1" marker-end="url(#pa1)"></line>
+  <text x="540" y="52" font-family="DM Mono, monospace" font-size="11" fill="currentColor" opacity="0.65">同一件事，四个名字</text>
+  <rect x="540" y="66" width="316" height="38" rx="3" class="k-a" fill="none" stroke-width="1.4"></rect>
+  <text x="554" y="82" font-family="DM Mono, monospace" font-size="11" class="f-a">Claude Code</text>
+  <text x="554" y="97" font-family="DM Mono, monospace" font-size="11" fill="currentColor">追加成对话消息</text>
+  <rect x="540" y="112" width="316" height="38" rx="3" class="k-b" fill="none" stroke-width="1.4"></rect>
+  <text x="554" y="128" font-family="DM Mono, monospace" font-size="11" class="f-b">codex</text>
+  <text x="554" y="143" font-family="DM Mono, monospace" font-size="11" fill="currentColor">片段 → ResponseItem::Message</text>
+  <rect x="540" y="158" width="316" height="38" rx="3" class="k-c" fill="none" stroke-width="1.4"></rect>
+  <text x="554" y="174" font-family="DM Mono, monospace" font-size="11" class="f-c">deepseek-harness</text>
+  <text x="554" y="189" font-family="DM Mono, monospace" font-size="11" fill="currentColor">PromptContext（user 角色快照）</text>
+  <rect x="540" y="204" width="316" height="38" rx="3" class="k-d" fill="none" stroke-width="1.4"></rect>
+  <text x="554" y="220" font-family="DM Mono, monospace" font-size="11" class="f-d">本仓</text>
+  <text x="554" y="235" font-family="DM Mono, monospace" font-size="11" fill="currentColor">dynamic 块 → messages 末尾</text>
+  <text x="540" y="268" font-family="DM Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.7">四份代码库互不相通，</text>
+  <text x="540" y="284" font-family="DM Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.7">四个团队各自写进了自己的类型注释。</text>
+</svg>

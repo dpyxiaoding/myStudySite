@@ -1,0 +1,29 @@
+<!-- 仓库自己写的规矩 · 图 1。由 project-instructions.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 880 268" role="img" aria-labelledby="figt figd">
+  <title id="figt">项目规则放在请求的哪一段，决定了它能不能中途更新</title>
+  <desc id="figd">三家把规则放在可重用前缀之后的 user 消息里，所以变化可以追加；本仓放在前缀内部的 system 段里，所以只能在 Run 起点冻结一次。</desc>
+  <g font-family="JetBrains Mono, monospace" font-size="12">
+    <text x="8" y="26" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.4">三家：规则在可重用前缀之后</text>
+    <rect x="8" y="40" width="150" height="46" rx="4" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)"></rect>
+    <text x="83" y="68" text-anchor="middle" fill="currentColor">system</text>
+    <rect x="164" y="40" width="180" height="46" rx="4" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)"></rect>
+    <text x="254" y="68" text-anchor="middle" fill="currentColor">工具表 / 历史</text>
+    <rect x="350" y="40" width="196" height="46" rx="4" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand-1)" stroke-width="1.5"></rect>
+    <text x="448" y="62" text-anchor="middle" fill="var(--vp-c-brand-1)" font-size="11">user：项目规则</text>
+    <text x="448" y="79" text-anchor="middle" fill="var(--vp-c-brand-1)" font-size="11">↓ 变了就再追加一条</text>
+    <rect x="552" y="40" width="150" height="46" rx="4" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand-1)" stroke-dasharray="4 3"></rect>
+    <text x="627" y="68" text-anchor="middle" fill="var(--vp-c-brand-1)" font-size="11">user：替换通知</text>
+    <line x1="8" y1="98" x2="344" y2="98" stroke="currentColor" stroke-width="1" opacity="0.4"></line>
+    <text x="176" y="114" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10.5">可重用前缀止于此</text>
+    <text x="8" y="168" fill="var(--vp-c-text-3)" font-size="11" letter-spacing="1.4">本仓：规则在前缀内部</text>
+    <rect x="8" y="182" width="150" height="46" rx="4" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)"></rect>
+    <text x="83" y="210" text-anchor="middle" fill="currentColor">平台 system</text>
+    <rect x="164" y="182" width="196" height="46" rx="4" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand-1)" stroke-width="1.5"></rect>
+    <text x="262" y="204" text-anchor="middle" fill="var(--vp-c-brand-1)" font-size="11">system：项目规则</text>
+    <text x="262" y="221" text-anchor="middle" fill="var(--vp-c-brand-1)" font-size="11">Run 起点冻结</text>
+    <rect x="366" y="182" width="180" height="46" rx="4" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-border)"></rect>
+    <text x="456" y="210" text-anchor="middle" fill="currentColor">工具表 / 历史</text>
+    <line x1="8" y1="240" x2="546" y2="240" stroke="currentColor" stroke-width="1" opacity="0.4"></line>
+    <text x="277" y="256" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10.5">可重用前缀止于此 —— 规则在里面，改了就要重算</text>
+  </g>
+</svg>

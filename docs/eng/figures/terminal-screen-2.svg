@@ -1,0 +1,28 @@
+<!-- 屏幕归谁管 · 图 2。由 terminal-screen.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 330" role="img" aria-label="主屏有向上无限的滚动历史、程序只占最后几行；备用屏只有一屏且整屏归程序，退出时主屏原样还回">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <rect class="ghost" x="70" y="30" width="200" height="140"></rect>
+  <rect class="pane" x="70" y="30" width="200" height="240" rx="2" fill="none"></rect>
+  <text x="170" y="18" text-anchor="middle" font-size="12">主屏缓冲区</text>
+  <text x="170" y="82" text-anchor="middle" font-size="11" opacity="0.7">滚动历史</text>
+  <text x="170" y="100" text-anchor="middle" font-size="11" opacity="0.7">（终端持有，可往上翻）</text>
+  <rect x="56" y="170" width="228" height="100" rx="2" fill="none" stroke="currentColor" stroke-dasharray="4 3" stroke-opacity="0.8"></rect>
+  <text x="170" y="192" text-anchor="middle" font-size="10.5" opacity="0.7">视口 · 一屏</text>
+  <rect class="pane pane-us" x="70" y="232" width="200" height="34" rx="2"></rect>
+  <text class="hl" x="170" y="254" text-anchor="middle" font-size="11">程序只管最后几行</text>
+  <text x="170" y="298" text-anchor="middle" font-size="11" opacity="0.75">退出后：内容留在历史里</text>
+  <rect class="pane pane-us" x="450" y="170" width="200" height="100" rx="2"></rect>
+  <text x="550" y="18" text-anchor="middle" font-size="12">备用屏缓冲区</text>
+  <text x="550" y="120" text-anchor="middle" font-size="11" opacity="0.7">没有滚动历史</text>
+  <text x="550" y="140" text-anchor="middle" font-size="11" opacity="0.7">上翻要程序自己实现</text>
+  <text class="hl" x="550" y="215" text-anchor="middle" font-size="11">一屏 · 每个单元格都归程序</text>
+  <text x="550" y="298" text-anchor="middle" font-size="11" opacity="0.75">退出后：主屏原样还回</text>
+  <path d="M296 196 C 350 196, 390 196, 442 196" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#ar2)"></path>
+  <text x="369" y="188" text-anchor="middle" font-size="10.5">ESC[?1049h</text>
+  <path d="M442 246 C 390 246, 350 246, 296 246" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#ar2)"></path>
+  <text x="369" y="264" text-anchor="middle" font-size="10.5">ESC[?1049l</text>
+</svg>

@@ -1,0 +1,76 @@
+<!-- 进程之间那条线 · 图 1。由 protocol.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 760 250" role="img" aria-label="三家协议与传输的结构对照">
+  <defs>
+    <marker id="w-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--vp-c-border)"></path>
+    </marker>
+    <marker id="w-ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--vp-c-brand-1)"></path>
+    </marker>
+  </defs>
+  <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--vp-c-text-3)">
+    <text x="10" y="16" letter-spacing="0.08em">CLAUDE CODE · 一条线，两种帧</text>
+    <text x="275" y="16" letter-spacing="0.08em">CODEX · 一套协议，四条传输</text>
+    <text x="545" y="16" letter-spacing="0.08em">DSH · 一个运行时，三套协议</text>
+  </g>
+  <!-- Claude Code -->
+  <g>
+    <rect x="14" y="44" width="70" height="26" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-border)"></rect>
+    <text x="49" y="61" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--vp-c-text-1)">SDK</text>
+    <rect x="150" y="44" width="70" height="26" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-border)"></rect>
+    <text x="185" y="61" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--vp-c-text-1)">CLI</text>
+    <path d="M 146 54 L 90 54" stroke="var(--vp-c-border)" fill="none" marker-end="url(#w-ah)"></path>
+    <text x="118" y="42" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--vp-c-text-3)">对话流</text>
+    <path d="M 90 66 L 146 66" stroke="var(--vp-c-brand-1)" fill="none" marker-end="url(#w-ah-a)"></path>
+    <path d="M 146 78 L 90 78" stroke="var(--vp-c-brand-1)" fill="none" marker-end="url(#w-ah-a)"></path>
+    <text x="118" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--vp-c-brand-1)">control_*</text>
+    <rect x="14" y="112" width="206" height="16" rx="2" fill="var(--vp-c-bg-soft)"></rect>
+    <text x="117" y="124" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-3)">同一条 stdio · NDJSON · 1MB/行</text>
+    <text x="14" y="158" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-3)">三个反向请求：</text>
+    <text x="14" y="174" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-2)">can_use_tool</text>
+    <text x="14" y="188" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-2)">hook_callback</text>
+    <text x="14" y="202" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-2)">mcp_message</text>
+  </g>
+  <line x1="248" y1="34" x2="248" y2="228" stroke="var(--vp-c-divider)"></line>
+  <!-- codex -->
+  <g>
+    <rect x="330" y="44" width="96" height="26" rx="3" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand-1)"></rect>
+    <text x="378" y="61" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--vp-c-brand-1)">protocol</text>
+    <g font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-2)">
+      <rect x="274" y="100" width="88" height="22" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)"></rect>
+      <text x="318" y="115" text-anchor="middle">stdio</text>
+      <rect x="374" y="100" width="88" height="22" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)"></rect>
+      <text x="418" y="115" text-anchor="middle">unix socket</text>
+      <rect x="274" y="130" width="88" height="22" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)" stroke-dasharray="3 3"></rect>
+      <text x="318" y="145" text-anchor="middle" fill="var(--vp-c-text-3)">websocket</text>
+      <rect x="374" y="130" width="88" height="22" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)"></rect>
+      <text x="418" y="145" text-anchor="middle">remote ctl</text>
+    </g>
+    <path d="M 350 70 L 318 96" stroke="var(--vp-c-border)" fill="none" marker-end="url(#w-ah)"></path>
+    <path d="M 406 70 L 418 96" stroke="var(--vp-c-border)" fill="none" marker-end="url(#w-ah)"></path>
+    <text x="274" y="176" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-3)">虚线 = 实验，明确不可用于生产</text>
+    <text x="274" y="192" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-3)">协议不可换，传输可换</text>
+  </g>
+  <line x1="490" y1="34" x2="490" y2="228" stroke="var(--vp-c-divider)"></line>
+  <!-- dsh -->
+  <g>
+    <rect x="580" y="44" width="96" height="26" rx="3" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand-1)"></rect>
+    <text x="628" y="61" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--vp-c-brand-1)">runtime</text>
+    <g font-family="JetBrains Mono, monospace" font-size="9">
+      <rect x="516" y="104" width="72" height="24" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)"></rect>
+      <text x="552" y="120" text-anchor="middle" fill="var(--vp-c-text-2)">SDK RPC</text>
+      <rect x="596" y="104" width="72" height="24" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)"></rect>
+      <text x="632" y="120" text-anchor="middle" fill="var(--vp-c-text-2)">ACP</text>
+      <rect x="676" y="104" width="68" height="24" rx="3" fill="var(--vp-c-bg)" stroke="var(--vp-c-divider)"></rect>
+      <text x="710" y="120" text-anchor="middle" fill="var(--vp-c-text-2)">Typert</text>
+    </g>
+    <path d="M 604 70 L 560 100" stroke="var(--vp-c-border)" fill="none" marker-end="url(#w-ah)"></path>
+    <path d="M 628 70 L 630 100" stroke="var(--vp-c-border)" fill="none" marker-end="url(#w-ah)"></path>
+    <path d="M 654 70 L 702 100" stroke="var(--vp-c-border)" fill="none" marker-end="url(#w-ah)"></path>
+    <text x="516" y="152" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-warning-1)">全量不过滤</text>
+    <text x="596" y="152" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-warning-1)">只发已提交</text>
+    <text x="676" y="152" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-warning-1)">源码推导</text>
+    <text x="516" y="180" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-3)">同一份内容，三种过滤策略</text>
+    <text x="516" y="196" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--vp-c-text-3)">由「客户端是谁」决定</text>
+  </g>
+</svg>

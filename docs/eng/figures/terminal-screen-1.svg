@@ -1,0 +1,29 @@
+<!-- 屏幕归谁管 · 图 1。由 terminal-screen.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 300" role="img" aria-label="终端与程序之间是一条双向字节流；shell 用 fork 和 exec 启动程序、让它继承 fd 0/1/2 之后就退到一边等待">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <rect class="pane" x="30" y="66" width="190" height="96" rx="2"></rect>
+  <text x="125" y="98" text-anchor="middle" font-size="14">终端</text>
+  <text x="125" y="120" text-anchor="middle" font-size="11" opacity="0.75">Windows Terminal</text>
+  <text x="125" y="140" text-anchor="middle" font-size="11" opacity="0.75">画字符 · 收按键</text>
+  <rect class="pane pane-us" x="500" y="66" width="190" height="96" rx="2"></rect>
+  <text class="hl" x="595" y="98" text-anchor="middle" font-size="14">程序</text>
+  <text class="hl" x="595" y="120" text-anchor="middle" font-size="11" opacity="0.85">claude · vim · 我们的 CLI</text>
+  <text class="hl" x="595" y="140" text-anchor="middle" font-size="11" opacity="0.85">决定画什么 · 按键含义</text>
+  <line x1="224" y1="92" x2="494" y2="92" stroke="currentColor" stroke-width="1.2" marker-end="url(#ar)"></line>
+  <text x="359" y="83" text-anchor="middle" font-size="11">按键 · 鼠标 · 粘贴</text>
+  <text x="359" y="108" text-anchor="middle" font-size="10.5" opacity="0.7">ESC[A　ESC[&lt;64;12;30M</text>
+  <line x1="494" y1="140" x2="224" y2="140" stroke="currentColor" stroke-width="1.2" marker-end="url(#ar)"></line>
+  <text x="359" y="132" text-anchor="middle" font-size="10.5" opacity="0.7">ESC[2J　ESC[?1049h</text>
+  <text x="359" y="157" text-anchor="middle" font-size="11">字符 · 控制序列</text>
+  <text x="359" y="185" text-anchor="middle" font-size="10.5" opacity="0.6">pty · 一条双向字节流</text>
+  <rect class="pane" x="264" y="228" width="190" height="52" rx="2" stroke-dasharray="4 3"></rect>
+  <text x="359" y="250" text-anchor="middle" font-size="13">shell</text>
+  <text x="359" y="268" text-anchor="middle" font-size="10.5" opacity="0.7">启动完就 waitpid 等着</text>
+  <line x1="458" y1="243" x2="536" y2="168" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ar)"></line>
+  <text x="560" y="222" text-anchor="middle" font-size="10.5" opacity="0.75">fork + exec</text>
+  <text x="560" y="238" text-anchor="middle" font-size="10.5" opacity="0.75">继承 fd 0/1/2</text>
+</svg>

@@ -1,0 +1,43 @@
+<!-- 命令跑起来之后 · 图 1。由 shell.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 880 250" role="img" aria-label="三种把 shell 能力切成工具的方式：Claude Code 按输出节奏切三把，codex 合成一把带会话，deepseek-harness 按会话形态切两把且装配时二选一">
+  <defs>
+    <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <!-- Claude Code -->
+  <text x="14" y="22" font-family="IBM Plex Mono, monospace" font-size="12" class="f-a" letter-spacing="0.5">CLAUDE CODE — 按输出节奏</text>
+  <rect x="14" y="36" width="128" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+  <text x="78" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="currentColor">Bash</text>
+  <rect x="152" y="36" width="128" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+  <text x="216" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="currentColor">Monitor</text>
+  <line x1="142" y1="53" x2="152" y2="53" stroke="currentColor" stroke-width="1"></line>
+  <text x="292" y="49" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.75">一次给完</text>
+  <text x="292" y="65" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity="0.75">每行一个事件</text>
+  <!-- codex -->
+  <text x="14" y="112" font-family="IBM Plex Mono, monospace" font-size="12" class="f-b" letter-spacing="0.5">CODEX — 合成一把，带会话</text>
+  <rect x="14" y="126" width="150" height="34" rx="3" fill="none" class="k-b" stroke-width="1.6"></rect>
+  <text x="89" y="147" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" class="f-b">exec_command</text>
+  <line x1="164" y1="143" x2="222" y2="143" stroke="currentColor" stroke-width="1.1" marker-end="url(#ar1)"></line>
+  <text x="193" y="136" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.75">session_id</text>
+  <rect x="228" y="126" width="132" height="34" rx="3" fill="none" class="k-b" stroke-width="1.6"></rect>
+  <text x="294" y="147" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" class="f-b">write_stdin</text>
+  <path d="M 294 160 L 294 174 L 89 174 L 89 160" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ar1)"></path>
+  <text x="192" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.75">同一个进程，反复喂输入</text>
+  <!-- dsh -->
+  <text x="470" y="22" font-family="IBM Plex Mono, monospace" font-size="12" class="f-c" letter-spacing="0.5">DEEPSEEK-HARNESS — 按会话形态</text>
+  <rect x="470" y="36" width="180" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+  <text x="560" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="currentColor">tool-bash</text>
+  <rect x="470" y="80" width="180" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"></rect>
+  <text x="560" y="101" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="currentColor">tool-bash-persistent</text>
+  <path d="M 650 53 L 690 53 L 690 75 L 720 75" fill="none" class="k-c" stroke-width="1.3" marker-end="url(#ar1)"></path>
+  <path d="M 650 97 L 690 97 L 690 75" fill="none" class="k-c" stroke-width="1.3"></path>
+  <text x="690" y="44" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.75">装配时二选一</text>
+  <rect x="726" y="58" width="120" height="34" rx="3" fill="none" class="k-c" stroke-width="1.6"></rect>
+  <text x="786" y="79" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" class="f-c">bash</text>
+  <text x="786" y="110" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.75">模型只看到这一个名字</text>
+  <line x1="470" y1="148" x2="846" y2="148" stroke="currentColor" stroke-width="1" opacity="0.25"></line>
+  <text x="470" y="172" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity="0.8">本仓：一把 bash，无持久、无后台、无 stdin</text>
+  <rect x="470" y="182" width="150" height="30" rx="3" fill="none" class="k-d" stroke-width="1.6"></rect>
+  <text x="545" y="201" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" class="f-d">bash</text>
+</svg>

@@ -1,0 +1,25 @@
+<!-- 上下文管理三家对读 · 三家的自动压缩水位。由 context.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 224" role="img" aria-label="三家的自动压缩水位对比：codex 在窗口的九成触发，dsh 在八成触发并且末尾一成六永不参与压缩，Claude Code 的阈值可配置且另有缓冲区把有效上限压到真实窗口之下">
+  <text x="10" y="20" font-size="11" opacity="0.7">一整个上下文窗口</text>
+  <text x="128" y="58" text-anchor="end" font-size="11.5">codex</text>
+  <rect class="pane" x="140" y="38" width="520" height="30" rx="2"></rect>
+  <rect class="pane-us" x="140" y="38" width="468" height="30" rx="2"></rect>
+  <line class="hl" x1="608" y1="32" x2="608" y2="74" stroke-width="1.6"></line>
+  <text class="hl" x="614" y="30" font-size="10.5">90%</text>
+  <text x="150" y="57" font-size="10.5" opacity="0.8">窗口 × 9/10，可用配置值压低</text>
+  <text x="128" y="112" text-anchor="end" font-size="11.5">dsh</text>
+  <rect class="pane" x="140" y="92" width="520" height="30" rx="2"></rect>
+  <rect class="pane-us" x="140" y="92" width="416" height="30" rx="2"></rect>
+  <rect class="ghost" x="583" y="93" width="76" height="28"></rect>
+  <line class="hl" x1="556" y1="86" x2="556" y2="128" stroke-width="1.6"></line>
+  <text class="hl" x="562" y="84" font-size="10.5">80%</text>
+  <text x="150" y="111" font-size="10.5" opacity="0.8">thresholdRatio 0.8</text>
+  <text x="621" y="111" text-anchor="middle" font-size="9.5" opacity="0.75">保留尾部</text>
+  <text x="621" y="140" text-anchor="middle" font-size="9.5" opacity="0.6">16% 永不参与</text>
+  <text x="128" y="172" text-anchor="end" font-size="11.5">Claude Code</text>
+  <rect class="pane" x="140" y="152" width="520" height="30" rx="2" stroke-dasharray="4 3"></rect>
+  <rect class="pane-warn" x="596" y="152" width="64" height="30" rx="2"></rect>
+  <text x="150" y="171" font-size="10.5" opacity="0.8">阈值可配置，具体值在闭源引擎的运行时</text>
+  <text class="warn" x="628" y="200" text-anchor="middle" font-size="9.5">自动压缩缓冲区</text>
+  <text x="628" y="214" text-anchor="middle" font-size="9.5" opacity="0.6">把有效上限压低</text>
+</svg>

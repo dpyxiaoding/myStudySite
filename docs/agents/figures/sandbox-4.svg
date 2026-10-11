@@ -1,0 +1,35 @@
+<!-- 沙箱与权限的三种解法 · 图 4。由 sandbox.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 300" role="img" aria-label="DeepSeek Harness 工具执行管线图：调用先落日志再执行，前置瀑布产出允许询问拒绝三种结果，询问走一次性审批提示，随后是只能拒绝的单调守卫，然后才是执行、后置瀑布与冻结的结果">
+  <rect x="0" y="26" width="152" height="44" rx="3" class="dg-box-em"></rect>
+  <text x="76" y="45" class="dg-t" text-anchor="middle">tool/call</text>
+  <text x="76" y="62" class="dg-t-sm" text-anchor="middle">先落日志，再执行</text>
+  <line x1="152" y1="48" x2="196" y2="48" class="dg-line" marker-end="url(#ah)"></line>
+  <rect x="196" y="26" width="170" height="44" rx="3" class="dg-box"></rect>
+  <text x="281" y="45" class="dg-t" text-anchor="middle">前置瀑布</text>
+  <text x="281" y="62" class="dg-t-sm" text-anchor="middle">钩子 · 权限 · 沙箱</text>
+  <line x1="366" y1="48" x2="410" y2="48" class="dg-deny" marker-end="url(#ah-deny)"></line>
+  <text x="418" y="52" class="dg-t-sm dg-f-deny">拒绝 → 结束</text>
+  <path d="M 281 70 L 281 100 L 196 100" class="dg-ask" marker-end="url(#ah-ask)"></path>
+  <text x="290" y="94" class="dg-t-sm dg-f-ask">询问</text>
+  <rect x="34" y="80" width="162" height="42" rx="3" class="dg-box"></rect>
+  <text x="115" y="98" class="dg-t" text-anchor="middle">一次性审批提示</text>
+  <text x="115" y="114" class="dg-t-sm" text-anchor="middle">缺席或答不了 = 拒绝</text>
+  <path d="M 115 122 L 115 148 L 196 148" class="dg-allow" marker-end="url(#ah-allow)"></path>
+  <rect x="196" y="128" width="170" height="44" rx="3" class="dg-box"></rect>
+  <text x="281" y="147" class="dg-t" text-anchor="middle">单调守卫</text>
+  <text x="281" y="164" class="dg-t-sm" text-anchor="middle">只能说「不」，说不了「行」</text>
+  <line x1="366" y1="150" x2="410" y2="150" class="dg-line" marker-end="url(#ah)"></line>
+  <rect x="410" y="128" width="150" height="44" rx="3" class="dg-box"></rect>
+  <text x="485" y="147" class="dg-t" text-anchor="middle">执行瀑布</text>
+  <text x="485" y="164" class="dg-t-sm" text-anchor="middle">超时 · 重试 · 指标</text>
+  <path d="M 485 172 L 485 200 L 366 200" class="dg-line" marker-end="url(#ah)"></path>
+  <rect x="196" y="180" width="170" height="42" rx="3" class="dg-box"></rect>
+  <text x="281" y="206" class="dg-t" text-anchor="middle">后置瀑布 · 归一化</text>
+  <line x1="196" y1="201" x2="152" y2="201" class="dg-line" marker-end="url(#ah)"></line>
+  <rect x="0" y="180" width="152" height="42" rx="3" class="dg-box-em"></rect>
+  <text x="76" y="199" class="dg-t" text-anchor="middle">冻结的结局</text>
+  <text x="76" y="215" class="dg-t-sm" text-anchor="middle">不可变、无损 JSON</text>
+  <line x1="0" y1="248" x2="720" y2="248" class="dg-rule"></line>
+  <text x="0" y="272" class="dg-t-sm"><tspan class="dg-f-steel">守卫的返回类型里故意没有「允许」</tspan>：返回一个理由就是拒绝，什么都不返回就保持瀑布的决定。</text>
+  <text x="0" y="290" class="dg-t-sm">于是「监听器注册顺序」永远不可能把一次拒绝变回许可——「权限只能收紧」被写进了类型系统。</text>
+</svg>
