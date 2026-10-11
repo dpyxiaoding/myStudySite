@@ -1,0 +1,49 @@
+<!-- deepseek-harness 的上下文管理 · 一次自动压缩的八步。由 deepseek-harness/context.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 352" role="img" aria-label="deepseek-harness 一次自动压缩的八步：每步之前检查压力、剪掉超长工具结果的中段、重新计价、选出要压缩的范围；然后写入加锁事件、发摘要请求、追加一条遮住原范围的摘要消息、最后写入解锁事件">
+  <defs>
+    <marker id="ds-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <rect class="pane" x="10" y="20" width="160" height="104" rx="2"></rect>
+  <text x="90" y="48" text-anchor="middle" font-size="13.5">① 每步之前检查</text>
+  <text x="90" y="72" text-anchor="middle" font-size="10.5" opacity="0.72">按日志给这次请求计价</text>
+  <text x="90" y="88" text-anchor="middle" font-size="10.5" opacity="0.72">超过阈值才往下走</text>
+  <rect class="pane" x="190" y="20" width="160" height="104" rx="2"></rect>
+  <text x="270" y="48" text-anchor="middle" font-size="13.5">② 剪工具结果</text>
+  <text x="270" y="72" text-anchor="middle" font-size="10.5" opacity="0.72">超长的只留开头和结尾</text>
+  <text x="270" y="88" text-anchor="middle" font-size="10.5" opacity="0.72">原结果仍在日志里</text>
+  <rect class="pane" x="370" y="20" width="160" height="104" rx="2"></rect>
+  <text x="450" y="48" text-anchor="middle" font-size="13.5">③ 重新计价</text>
+  <text x="450" y="72" text-anchor="middle" font-size="10.5" opacity="0.72">降到阈值以下就结束</text>
+  <text x="450" y="88" text-anchor="middle" font-size="10.5" opacity="0.72">这次不做摘要</text>
+  <rect class="pane" x="550" y="20" width="160" height="104" rx="2"></rect>
+  <text x="630" y="48" text-anchor="middle" font-size="13.5">④ 选范围</text>
+  <text x="630" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">从最早的消息开始</text>
+  <text x="630" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">工具调用和结果不拆开</text>
+  <text x="630" y="102" text-anchor="middle" font-size="10.5" opacity="0.72">末尾 16% 原样保留</text>
+  <rect class="pane" x="550" y="208" width="160" height="104" rx="2"></rect>
+  <text x="630" y="236" text-anchor="middle" font-size="13.5">⑤ compaction/start</text>
+  <text x="630" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">写进日志，相当于加锁</text>
+  <rect class="pane pane-us" x="370" y="208" width="160" height="104" rx="2"></rect>
+  <text class="hl" x="450" y="236" text-anchor="middle" font-size="13.5">⑥ 发摘要请求</text>
+  <text x="450" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">系统提示词、工具、原消息</text>
+  <text x="450" y="276" text-anchor="middle" font-size="10.5" opacity="0.72">末尾追加压缩指令</text>
+  <text class="hl" x="450" y="296" text-anchor="middle" font-size="10.5">复用前缀缓存</text>
+  <rect class="pane" x="190" y="208" width="160" height="104" rx="2"></rect>
+  <text x="270" y="236" text-anchor="middle" font-size="13.5">⑦ 追加摘要消息</text>
+  <text x="270" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">声明遮住选中的那一段</text>
+  <text x="270" y="276" text-anchor="middle" font-size="10.5" opacity="0.72">被遮住的事件仍在日志里</text>
+  <rect class="pane" x="10" y="208" width="160" height="104" rx="2"></rect>
+  <text x="90" y="236" text-anchor="middle" font-size="13.5">⑧ compaction/end</text>
+  <text x="90" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">最后一步才写，相当于解锁</text>
+  <line x1="172" y1="72" x2="186" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <line x1="352" y1="72" x2="366" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <line x1="532" y1="72" x2="546" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <text class="hl" x="540" y="13" text-anchor="middle" font-size="10.5">还超才继续</text>
+  <line x1="630" y1="126" x2="630" y2="204" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <line x1="548" y1="260" x2="534" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <line x1="368" y1="260" x2="354" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <line x1="188" y1="260" x2="174" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#ds-ar)"></line>
+  <text x="360" y="340" text-anchor="middle" font-size="10.5" opacity="0.72">⑤ 到 ⑧ 之间崩溃，日志里会留下一个没有结束的 start，能被发现</text>
+</svg>

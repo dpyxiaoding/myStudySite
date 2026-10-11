@@ -24,7 +24,8 @@ export const SECTIONS: Section[] = [
     dir: 'agents',
     title: '智能体',
     indexLabel: '分类说明',
-    groups: ['智能体内核', '协议与接入', '平台能力']
+    // 前四组是子文件夹 claude-code / codex / deepseek-harness 的组名（取各自 index.md 的标题）和三家差异；后三组是改写前的旧文
+    groups: ['Claude Code 功能介绍', 'codex 功能介绍', 'deepseek-harness 功能介绍', '三家差异', '智能体内核', '协议与接入', '平台能力']
   },
   { dir: 'eng', title: '工程笔记', indexLabel: '目录' }
 ]
@@ -189,9 +190,10 @@ export function buildSidebar(articles = scanArticles()): DefaultTheme.SidebarMul
     sidebar[`/${s.dir}/`] = [
       // 没写 group 的文章直接排在分类首页下面
       { text: s.title, items: [{ text: s.indexLabel, link: `/${s.dir}/` }, ...mine.filter((a) => !a.group).map(item)] },
+      // 分组默认收起，正在看的文章所在的组自动展开（VitePress 的行为）
       ...groupsOf(s, articles).map((g) => ({
         text: g,
-        collapsed: false,
+        collapsed: true,
         items: mine.filter((a) => a.group === g).map(item)
       }))
     ]

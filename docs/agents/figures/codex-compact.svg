@@ -1,0 +1,51 @@
+<!-- codex 的上下文管理 · 一次压缩的八步。由 codex/context.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 352" role="img" aria-label="codex 一次压缩的八步：触发、PreCompact 钩子、按服务商选实现、发压缩请求；然后保留用户消息、按新窗口装回初始背景、运行 SessionStart 钩子、运行 PostCompact 钩子">
+  <defs>
+    <marker id="cx-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <rect class="pane" x="10" y="20" width="160" height="104" rx="2"></rect>
+  <text x="90" y="48" text-anchor="middle" font-size="13.5">① 触发</text>
+  <text x="90" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">回合开始前或中途超阈值</text>
+  <text x="90" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">换模型时先用旧模型压</text>
+  <text x="90" y="102" text-anchor="middle" font-size="10.5" opacity="0.72">手动：/compact</text>
+  <rect class="pane" x="190" y="20" width="160" height="104" rx="2"></rect>
+  <text x="270" y="48" text-anchor="middle" font-size="13.5">② PreCompact 钩子</text>
+  <text x="270" y="72" text-anchor="middle" font-size="10.5" opacity="0.72">收到触发方式</text>
+  <text x="270" y="88" text-anchor="middle" font-size="10.5" opacity="0.72">返回 continue:false 就停下</text>
+  <rect class="pane pane-us" x="370" y="20" width="160" height="104" rx="2"></rect>
+  <text class="hl" x="450" y="48" text-anchor="middle" font-size="13.5">③ 按服务商选实现</text>
+  <text x="450" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">OpenAI 等：服务端压缩</text>
+  <text x="450" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">其他服务商：本地摘要</text>
+  <text x="450" y="102" text-anchor="middle" font-size="10.5" opacity="0.72">实验开关：直接换新窗口</text>
+  <rect class="pane" x="550" y="20" width="160" height="104" rx="2"></rect>
+  <text x="630" y="48" text-anchor="middle" font-size="13.5">④ 发压缩请求</text>
+  <text x="630" y="72" text-anchor="middle" font-size="10.5" opacity="0.72">服务端：原请求加触发项</text>
+  <text x="630" y="88" text-anchor="middle" font-size="10.5" opacity="0.72">本地：历史加摘要提示词</text>
+  <rect class="pane" x="550" y="208" width="160" height="104" rx="2"></rect>
+  <text x="630" y="236" text-anchor="middle" font-size="13.5">⑤ 只留用户消息</text>
+  <text x="630" y="258" text-anchor="middle" font-size="10.5" opacity="0.72">服务端：最近 6.4 万 token</text>
+  <text x="630" y="274" text-anchor="middle" font-size="10.5" opacity="0.72">本地：最近 2 万 token</text>
+  <text x="630" y="290" text-anchor="middle" font-size="10.5" opacity="0.72">末尾接上压缩结果</text>
+  <rect class="pane" x="370" y="208" width="160" height="104" rx="2"></rect>
+  <text x="450" y="236" text-anchor="middle" font-size="13.5">⑥ 装回初始背景</text>
+  <text x="450" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">世界状态按新窗口全量渲染</text>
+  <text x="450" y="276" text-anchor="middle" font-size="10.5" opacity="0.72">插在最后一条用户消息前</text>
+  <rect class="pane" x="190" y="208" width="160" height="104" rx="2"></rect>
+  <text x="270" y="236" text-anchor="middle" font-size="13.5">⑦ SessionStart 钩子</text>
+  <text x="270" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">匹配 compact 的钩子</text>
+  <text x="270" y="276" text-anchor="middle" font-size="10.5" opacity="0.72">在下一次请求前运行</text>
+  <rect class="pane" x="10" y="208" width="160" height="104" rx="2"></rect>
+  <text x="90" y="236" text-anchor="middle" font-size="13.5">⑧ PostCompact 钩子</text>
+  <text x="90" y="260" text-anchor="middle" font-size="10.5" opacity="0.72">收到触发方式</text>
+  <text x="90" y="276" text-anchor="middle" font-size="10.5" opacity="0.72">返回 continue:false 就停下</text>
+  <line x1="172" y1="72" x2="186" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <line x1="352" y1="72" x2="366" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <line x1="532" y1="72" x2="546" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <line x1="630" y1="126" x2="630" y2="204" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <line x1="548" y1="260" x2="534" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <line x1="368" y1="260" x2="354" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <line x1="188" y1="260" x2="174" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#cx-ar)"></line>
+  <text x="360" y="340" text-anchor="middle" font-size="10.5" opacity="0.72">窗口编号加一；记录文件里写一条 Compacted，带摘要和替换后的历史</text>
+</svg>

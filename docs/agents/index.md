@@ -6,9 +6,11 @@
 
 先读[智能体功能简介](/agents/overview)：8 组 29 项功能，每项讲它是什么、难在哪。
 
+然后是每家一组的功能介绍，按功能简介的清单逐项写。已经写好的是上下文管理：[Claude Code](/agents/claude-code/context)、[codex](/agents/codex/context)、[deepseek-harness](/agents/deepseek-harness/context)。
+
 之后会陆续补上：
 
-- **Claude Code、codex、deepseek-harness 功能介绍**：每家一组，按功能简介的清单逐项介绍
+- **三家功能介绍的其余各项**
 - **三家差异**：每个功能一篇，三家并排对照
 - **对自建智能体的启示**
 
