@@ -92,7 +92,7 @@
   border-radius: 4px;
 }
 
-/* ---------- 左侧目录：当前页加浅色底 ---------- */
+/* ---------- 左侧目录：当前页加浅色底；分组默认收起 ---------- */
 .VPSidebarItem.level-1 > .item,
 .VPSidebarItem.level-0 > .items > .VPSidebarItem > .item {
   padding-left: 10px;
@@ -103,6 +103,17 @@
 }
 .VPSidebarItem.is-active > .item .text {
   font-weight: 500;
+}
+/* 正在看的文章所在的组，VitePress 要等页面跑起来才展开（index.ts 那时给 html 加 hydrated）。
+   在那之前显示的是静态 HTML，先用样式把这一组摊开，免得刚打开页面时目录跳一下 */
+html:not(.hydrated) .VPSidebarItem.level-0.collapsed.has-active {
+  padding-bottom: 24px;
+}
+html:not(.hydrated) .VPSidebarItem.collapsed.has-active > .items {
+  display: block;
+}
+html:not(.hydrated) .VPSidebarItem.collapsed.has-active .caret-icon {
+  transform: rotate(90deg);
 }
 
 /* ---------- 提示框：左侧色条 ---------- */
