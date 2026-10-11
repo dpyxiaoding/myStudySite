@@ -11,7 +11,7 @@ outline: 2
 本篇只讲 deepseek-harness（下文简称 dsh）：它的上下文里装了什么、怎么判断快满了、太大的工具输出怎么处理、满了怎么压缩、压缩出了问题怎么办。上下文窗口、压缩这些概念见[智能体功能简介](/agents/overview#上下文管理与压缩)。
 
 ::: info 依据
-- 核对的是 0.2.1-alpha.2，源码读的是 2026-10-09 的 main 分支（提交 `d743267`）。
+- 核对的是 0.2.1-alpha.2，源码读的是 2026-10-09 的 master 分支（提交 `d743267`）。
 - 依据是自带的子系统文档、各包 README、源码和默认打包配置，详见[本组的依据](/agents/deepseek-harness/#本组的依据)。没有实际运行。
 - dsh 一切皆插件，下文的「默认」指默认打包配置 `packages/bundle/base/cordis.patch.yml` 装上的插件和参数。
 :::
@@ -272,7 +272,7 @@ dsh 的思路是「截断，但全文留在一个模型能取回的地方，并�
 
 ## 来源
 
-源码：[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)，main 分支 2026-10-09 的提交 `d743267`（版本 0.2.1-alpha.2）。
+源码：[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)，master 分支 2026-10-09 的提交 `d743267`（版本 0.2.1-alpha.2）。
 
 自带文档：
 
