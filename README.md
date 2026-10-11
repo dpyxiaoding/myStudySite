@@ -17,7 +17,7 @@
 ├─ docs/                       网站内容
 │  ├─ .vitepress/
 │  │  ├─ config.mts            网站标题、搜索、页脚等设置
-│  │  ├─ articles.ts           分类清单；扫描文章，生成顶部分类和左侧目录
+│  │  ├─ articles.ts           分类清单；扫描文章（含一层子文件夹），生成顶部分类和左侧目录
 │  │  ├─ search-tokenize.ts    搜索切词规则（中文按相邻两字切，句中的词也能搜到）
 │  │  ├─ font-weights.ts       思源黑体可变字体的粗细，保持和以前三个字重时一致
 │  │  ├─ markdown.ts           对读文章的「三家各一段」写法、右侧目录的短名字
@@ -37,4 +37,4 @@
 └─ DEPLOY.md                   如何发布到 GitHub Pages
 ```
 
-新文章复制 `templates/` 里的模板来写，放进对应分类文件夹，左侧目录和目录表会自动更新，步骤见 [WRITING.md](./WRITING.md)。
+新文章复制 `templates/` 里的模板来写，放进对应分类文件夹（也可以放进分类下的子文件夹，自成一组），左侧目录和目录表会自动更新，步骤见 [WRITING.md](./WRITING.md)。

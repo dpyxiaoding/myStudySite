@@ -12,7 +12,7 @@ declare const data: Data
 export { data }
 
 export default defineLoader({
-  watch: ['../../*/*.md'],
+  watch: ['../../*/*.md', '../../*/*/*.md'],
   load(): Data {
     const articles = scanArticles()
     return {

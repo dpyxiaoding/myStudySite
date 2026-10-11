@@ -1,6 +1,7 @@
 // 文章清单：扫描各分类文件夹里的 md，读开头的说明（frontmatter）和一级标题。
 // 右上角分类、左侧目录（config.mts）和分类首页的目录表（ArticleIndex.vue）都由它生成，
 // 新增文章只要把 md 放进对应文件夹，不用改这里。只有新开一个分类时才在 SECTIONS 里加一项。
+// 分类文件夹下的子文件夹自成一组（只认一层），组名取子文件夹里 index.md 的标题。
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -13,7 +14,7 @@ export interface Section {
   title: string
   /** 左侧目录里指向分类首页的那一项 */
   indexLabel: string
-  /** 分组在左侧目录里的先后；没列出的新分组按出现顺序排在后面 */
+  /** 分组在左侧目录里的先后；没列出的新分组排在后面，按组里最靠前的一篇排 */
   groups?: string[]
 }
 
@@ -30,12 +31,14 @@ export const SECTIONS: Section[] = [
 
 export interface Article {
   section: string
-  /** 站内链接，如 /agents/context */
+  /** 站内链接，如 /agents/context、/agents/claude-code/context，子文件夹首页是 /agents/claude-code/ */
   link: string
   title: string
   /** 左侧目录里显示的名字 */
   label: string
   group?: string
+  /** 子文件夹的 index.md，在本组里排第一 */
+  groupIndex?: boolean
   order?: number
   date?: string
   summary?: string
@@ -96,17 +99,18 @@ function firstHeading(body: string): string | undefined {
   }
 }
 
-function readArticle(section: string, file: string): Article {
+/** file 是相对分类文件夹的路径，如 context.md、claude-code/index.md */
+function readArticle(section: string, file: string, defaultLabel?: string): Article {
   const src = fs.readFileSync(path.join(DOCS_DIR, section, file), 'utf-8').replace(/^﻿/, '')
   const { data, body } = readFrontmatter(src)
-  const slug = file.replace(/\.md$/, '')
-  const title = data.title || firstHeading(body) || slug
+  const slug = file.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
+  const title = data.title || firstHeading(body) || path.posix.basename(slug)
   const order = Number(data.order)
   return {
     section,
     link: `/${section}/${slug}`,
     title,
-    label: data.label || title,
+    label: data.label || defaultLabel || title,
     group: data.group || undefined,
     order: data.order && Number.isFinite(order) ? order : undefined,
     date: data.date || undefined,
@@ -130,11 +134,35 @@ export function scanArticles(): Article[] {
   for (const s of SECTIONS) {
     const dir = path.join(DOCS_DIR, s.dir)
     if (!fs.existsSync(dir)) continue
-    for (const file of fs.readdirSync(dir)) {
-      if (file.endsWith('.md') && file !== 'index.md') list.push(readArticle(s.dir, file))
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) list.push(...scanFolder(s.dir, entry.name))
+      else if (entry.name.endsWith('.md') && entry.name !== 'index.md') list.push(readArticle(s.dir, entry.name))
     }
   }
-  return list.sort(compare)
+  return placeIndexFirst(list.sort(compare))
+}
+
+/**
+ * 子文件夹里的文章都归到同一组，文章自己写的 group 不管。组名取 index.md 的标题，
+ * index.md 本身是组里第一项，左侧目录里默认叫「概览」；没有 index.md 时组名用文件夹名。
+ */
+function scanFolder(section: string, folder: string): Article[] {
+  const files = fs.readdirSync(path.join(DOCS_DIR, section, folder)).filter((f) => f.endsWith('.md'))
+  if (!files.length) return []
+  const index = files.includes('index.md') ? readArticle(section, `${folder}/index.md`, '概览') : undefined
+  const group = index?.title ?? folder
+  const list = files.filter((f) => f !== 'index.md').map((f) => ({ ...readArticle(section, `${folder}/${f}`), group }))
+  return index ? [{ ...index, group, groupIndex: true }, ...list] : list
+}
+
+/** 子文件夹的首页挪到本组最靠前那篇的位置：它在组里总排第一，分组的先后不受影响 */
+function placeIndexFirst(list: Article[]): Article[] {
+  for (const index of list.filter((a) => a.groupIndex)) {
+    const from = list.indexOf(index)
+    const to = list.findIndex((a) => a.section === index.section && a.group === index.group)
+    if (to < from) list.splice(to, 0, ...list.splice(from, 1))
+  }
+  return list
 }
 
 /** 某个分类下的分组，按 SECTIONS 里写的顺序，新分组按出现顺序接在后面 */
@@ -176,7 +204,7 @@ export function buildSidebar(articles = scanArticles()): DefaultTheme.SidebarMul
  * VitePress 自己只在配置文件变化时才重算侧边栏。
  */
 export function articlesPlugin(): Plugin {
-  const articleRE = new RegExp(`^(${SECTIONS.map((s) => s.dir).join('|')})/[^/]+\\.md$`)
+  const articleRE = new RegExp(`^(${SECTIONS.map((s) => s.dir).join('|')})/([^/]+/)?[^/]+\\.md$`)
   let site: { themeConfig: DefaultTheme.Config } | undefined
   return {
     name: 'site:articles',
