@@ -457,3 +457,7 @@ html:not(.hydrated) .VPSidebarItem.collapsed.has-active .caret-icon {
 .vp-doc tr:nth-child(2n) {
   background: transparent;
 }
+/* 表头第一格空着的表（三家差异那种对照表），第一列是行标题：留出宽度，不被后面几列挤成一字一行 */
+.vp-doc table:has(> thead > tr > th:first-child:empty) td:first-child {
+  min-width: 9em;
+}

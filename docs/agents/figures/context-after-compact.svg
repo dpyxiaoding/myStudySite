@@ -1,0 +1,78 @@
+<!-- 上下文管理：三家差异 · 同一段对话压缩之后三家各留下什么（示意，不按比例）。由 context.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 292" role="img" aria-label="同一段对话压缩之后三家各留下什么。压缩前是背景加上用户消息、模型回复、工具调用交替的十二条。Claude Code 留下系统提示词、重读的项目说明、摘要、最近的一组用户消息和回复原样，再装回文件和技能等。codex 只留三条用户消息，背景按新窗口重新渲染，插在最后一条用户消息之前，压缩结果放在最后。dsh 留下系统提示词、摘要和末尾四条原样，背景快照被遮掉时才重新追加">
+  <text x="138" y="46" text-anchor="end" font-size="12">压缩前</text>
+  <rect class="ghost" x="150" y="28" width="40" height="26" rx="2"></rect>
+  <text x="170" y="45" text-anchor="middle" font-size="10.5">背景</text>
+  <rect class="pane-us" x="194" y="28" width="40" height="26" rx="2"></rect>
+  <text x="214" y="45" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane" x="238" y="28" width="40" height="26" rx="2"></rect>
+  <text x="258" y="45" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="pane" x="282" y="28" width="40" height="26" rx="2"></rect>
+  <text x="302" y="45" text-anchor="middle" font-size="10.5">工具</text>
+  <rect class="pane" x="326" y="28" width="40" height="26" rx="2"></rect>
+  <text x="346" y="45" text-anchor="middle" font-size="10.5">工具</text>
+  <rect class="pane" x="370" y="28" width="40" height="26" rx="2"></rect>
+  <text x="390" y="45" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="pane-us" x="414" y="28" width="40" height="26" rx="2"></rect>
+  <text x="434" y="45" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane" x="458" y="28" width="40" height="26" rx="2"></rect>
+  <text x="478" y="45" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="pane" x="502" y="28" width="40" height="26" rx="2"></rect>
+  <text x="522" y="45" text-anchor="middle" font-size="10.5">工具</text>
+  <rect class="pane" x="546" y="28" width="40" height="26" rx="2"></rect>
+  <text x="566" y="45" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="pane-us" x="590" y="28" width="40" height="26" rx="2"></rect>
+  <text x="610" y="45" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane" x="634" y="28" width="40" height="26" rx="2"></rect>
+  <text x="654" y="45" text-anchor="middle" font-size="10.5">回复</text>
+  <line x1="20" y1="74" x2="700" y2="74" stroke="currentColor" opacity="0.2"></line>
+  <text x="150" y="90" font-size="11" opacity="0.7">压缩之后，模型看到的：</text>
+  <text class="f-a" x="138" y="118" text-anchor="end" font-size="12">Claude Code</text>
+  <rect class="ghost" x="150" y="100" width="68" height="26" rx="2"></rect>
+  <text x="184" y="117" text-anchor="middle" font-size="10.5">系统提示词</text>
+  <rect class="ghost" x="222" y="100" width="96" height="26" rx="2"></rect>
+  <text x="270" y="117" text-anchor="middle" font-size="10.5">项目说明（重读）</text>
+  <rect class="pane-warn" x="322" y="100" width="56" height="26" rx="2"></rect>
+  <text x="350" y="117" text-anchor="middle" font-size="10.5">摘要</text>
+  <rect class="pane-us" x="382" y="100" width="40" height="26" rx="2"></rect>
+  <text x="402" y="117" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane" x="426" y="100" width="40" height="26" rx="2"></rect>
+  <text x="446" y="117" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="ghost" x="470" y="100" width="112" height="26" rx="2"></rect>
+  <text x="526" y="117" text-anchor="middle" font-size="10.5">文件、技能等（装回）</text>
+  <path d="M382 132 v4 h84 v-4" fill="none" stroke="currentColor" opacity="0.45"></path>
+  <text x="424" y="150" text-anchor="middle" font-size="10" opacity="0.75">最近的往来，原样</text>
+  <text class="f-b" x="138" y="186" text-anchor="end" font-size="12">codex</text>
+  <rect class="ghost" x="150" y="168" width="72" height="26" rx="2"></rect>
+  <text x="186" y="185" text-anchor="middle" font-size="10.5">背景（前缀）</text>
+  <rect class="pane-us" x="226" y="168" width="40" height="26" rx="2"></rect>
+  <text x="246" y="185" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane-us" x="270" y="168" width="40" height="26" rx="2"></rect>
+  <text x="290" y="185" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="ghost" x="314" y="168" width="48" height="26" rx="2"></rect>
+  <text x="338" y="185" text-anchor="middle" font-size="10.5">背景</text>
+  <rect class="pane-us" x="366" y="168" width="40" height="26" rx="2"></rect>
+  <text x="386" y="185" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane-warn" x="410" y="168" width="72" height="26" rx="2"></rect>
+  <text x="446" y="185" text-anchor="middle" font-size="10.5">压缩结果</text>
+  <path d="M226 200 v4 h180 v-4" fill="none" stroke="currentColor" opacity="0.45"></path>
+  <text x="316" y="218" text-anchor="middle" font-size="10" opacity="0.75">只留用户说过的话，背景重新渲染</text>
+  <text class="f-c" x="138" y="254" text-anchor="end" font-size="12">dsh</text>
+  <rect class="ghost" x="150" y="236" width="68" height="26" rx="2"></rect>
+  <text x="184" y="253" text-anchor="middle" font-size="10.5">系统提示词</text>
+  <rect class="pane-warn" x="222" y="236" width="56" height="26" rx="2"></rect>
+  <text x="250" y="253" text-anchor="middle" font-size="10.5">摘要</text>
+  <rect class="pane" x="282" y="236" width="40" height="26" rx="2"></rect>
+  <text x="302" y="253" text-anchor="middle" font-size="10.5">工具</text>
+  <rect class="pane" x="326" y="236" width="40" height="26" rx="2"></rect>
+  <text x="346" y="253" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="pane-us" x="370" y="236" width="40" height="26" rx="2"></rect>
+  <text x="390" y="253" text-anchor="middle" font-size="10.5">用户</text>
+  <rect class="pane" x="414" y="236" width="40" height="26" rx="2"></rect>
+  <text x="434" y="253" text-anchor="middle" font-size="10.5">回复</text>
+  <rect class="pane" x="458" y="236" width="72" height="26" rx="2" stroke-dasharray="4 3"></rect>
+  <text x="494" y="253" text-anchor="middle" font-size="10.5">背景快照</text>
+  <path d="M282 268 v4 h172 v-4" fill="none" stroke="currentColor" opacity="0.45"></path>
+  <text x="368" y="286" text-anchor="middle" font-size="10" opacity="0.75">末尾约 16%，原样</text>
+  <text x="494" y="286" text-anchor="middle" font-size="10" opacity="0.75">被遮掉时才追加</text>
+</svg>

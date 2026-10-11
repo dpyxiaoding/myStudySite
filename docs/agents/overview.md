@@ -112,11 +112,11 @@ toc:
 
 ### 上下文管理与压缩
 
-模型没有记忆，每一轮都要把整段对话重新发给它；它一次能读的量有上限，叫上下文窗口。窗口快满时，智能体要先清掉旧的工具输出，必要时把前面的对话压成一段摘要。
+模型没有记忆，每一轮都要把整段对话重新发给它；它一次能读的量有上限，叫上下文窗口。窗口快满时，常见的做法是先清掉旧的工具输出，不够再把前面的对话压成一段摘要。
 
 <small>难点</small> 撑满窗口的主要不是聊天，是工具输出：读一个三千行的文件、跑一次测试，几千行就进去了。什么时候压、在哪一步压、摘要写成什么样都有讲究，压坏了会丢掉关键约定。还有一种失效：一个超大的输出让窗口压完又立刻满，自动压缩陷入死循环，每一轮都在花钱调模型。
 
-延伸阅读：[Claude Code](/agents/claude-code/context)、[codex](/agents/codex/context)、[deepseek-harness](/agents/deepseek-harness/context) 各自的上下文管理，[三家对读（旧文）](/agents/context)
+延伸阅读：[Claude Code](/agents/claude-code/context)、[codex](/agents/codex/context)、[deepseek-harness](/agents/deepseek-harness/context) 各自的上下文管理，[三家差异](/agents/context)
 
 ### 提示词装配与缓存
 
