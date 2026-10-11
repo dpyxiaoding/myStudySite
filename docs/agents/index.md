@@ -6,7 +6,7 @@
 
 先读[智能体功能简介](/agents/overview)：8 组 29 项功能，每项讲它是什么、难在哪。
 
-然后是每家一组的功能介绍，按功能简介的清单逐项写，再把三家放在一起比较。已经写好的是上下文管理：[Claude Code](/agents/claude-code/context)、[codex](/agents/codex/context)、[deepseek-harness](/agents/deepseek-harness/context) 各一篇，加上[三家差异](/agents/context)。
+然后是每家一组的功能介绍，按功能简介的清单逐项写，再把三家放在一起比较。每组开头先有一篇全景，把这一家有的东西一页列全：[Claude Code](/agents/claude-code/panorama)、[codex](/agents/codex/panorama)、[deepseek-harness](/agents/deepseek-harness/panorama)。已经写好的功能是上下文管理：[Claude Code](/agents/claude-code/context)、[codex](/agents/codex/context)、[deepseek-harness](/agents/deepseek-harness/context) 各一篇，加上[三家差异](/agents/context)。
 
 之后会陆续补上：
 

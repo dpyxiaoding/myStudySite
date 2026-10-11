@@ -29,6 +29,10 @@ Claude Code 是 Anthropic 的编程智能体：读代码、改文件、跑命令
 
 ## 本组目录
 
+- [全景](/agents/claude-code/panorama)：在哪里用、全部命令和快捷键、全部工具、模型、扩展、并行、权限、代码审查、企业部署，一页列全
+
+按功能简介的清单逐项介绍：
+
 1. [上下文管理](/agents/claude-code/context)
 
 其余各项陆续补上，顺序和功能简介一致。

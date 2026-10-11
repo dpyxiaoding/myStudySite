@@ -27,6 +27,10 @@ deepseek-harness（简称 dsh）是 DeepSeek 开源的智能体框架。它的�
 
 ## 本组目录
 
+- [全景](/agents/deepseek-harness/panorama)：在哪里用、命令和快捷键、给模型的工具、模型、扩展、并行、权限、代码审查、部署，一页列全
+
+按功能简介的清单逐项介绍：
+
 1. [上下文管理](/agents/deepseek-harness/context)
 
 其余各项陆续补上，顺序和功能简介一致。
