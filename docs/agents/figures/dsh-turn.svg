@@ -1,0 +1,54 @@
+<!-- deepseek-harness 的回合循环与中断 · 一轮怎么跑。由 deepseek-harness/turn-loop.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 320" role="img" aria-label="deepseek-harness 的一轮：开始一轮，准备这一步，请求模型；回复里有工具调用就执行工具、结束这一步并领取插话，再准备下一步；没有工具调用就做收尾检查，有新插话再走一步，没有则这一轮结束。Esc 可以打断模型请求，也可以打断工具执行">
+  <defs>
+    <marker id="dst-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <rect class="pane" x="10" y="20" width="160" height="104" rx="2"></rect>
+  <text x="90" y="46" text-anchor="middle" font-size="13.5">① 开始一轮</text>
+  <text x="90" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">领取插话和</text>
+  <text x="90" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">一条排队的消息</text>
+  <text x="90" y="102" text-anchor="middle" font-size="10.5" opacity="0.72">turn/start</text>
+  <rect class="pane" x="190" y="20" width="160" height="104" rx="2"></rect>
+  <text x="270" y="46" text-anchor="middle" font-size="13.5">② 准备这一步</text>
+  <text x="270" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">组装提示词和工具</text>
+  <text x="270" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">插件可以拒绝这一步</text>
+  <text x="270" y="102" text-anchor="middle" font-size="10.5" opacity="0.72">step/start</text>
+  <rect class="pane" x="370" y="20" width="160" height="104" rx="2"></rect>
+  <text x="450" y="46" text-anchor="middle" font-size="13.5">③ 请求模型</text>
+  <text x="450" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">等整条回复成功</text>
+  <text x="450" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">出错按策略整个重发</text>
+  <text class="warn" x="450" y="106" text-anchor="middle" font-size="10.5">Esc → 中断这一轮</text>
+  <rect class="pane" x="550" y="20" width="160" height="104" rx="2"></rect>
+  <text x="630" y="46" text-anchor="middle" font-size="13.5">⑥ 收尾检查</text>
+  <text x="630" y="70" text-anchor="middle" font-size="10.5" opacity="0.72">agent/turn-stopping</text>
+  <text x="630" y="86" text-anchor="middle" font-size="10.5" opacity="0.72">又有插话：回到 ②</text>
+  <text x="630" y="102" text-anchor="middle" font-size="10.5" opacity="0.72">没有：结束</text>
+  <rect class="pane pane-us" x="370" y="208" width="160" height="104" rx="2"></rect>
+  <text class="hl" x="450" y="234" text-anchor="middle" font-size="13.5">④ 执行工具</text>
+  <text x="450" y="258" text-anchor="middle" font-size="10.5" opacity="0.72">独占的单独跑</text>
+  <text x="450" y="274" text-anchor="middle" font-size="10.5" opacity="0.72">可并发的最多 10 个</text>
+  <text class="warn" x="450" y="298" text-anchor="middle" font-size="10.5">Esc → 中断这一轮</text>
+  <rect class="pane pane-us" x="190" y="208" width="160" height="104" rx="2"></rect>
+  <text class="hl" x="270" y="234" text-anchor="middle" font-size="13.5">⑤ 结束这一步</text>
+  <text x="270" y="258" text-anchor="middle" font-size="10.5" opacity="0.72">结果按调用顺序记录</text>
+  <text class="hl" x="270" y="274" text-anchor="middle" font-size="10.5">插话在下一步开头领取</text>
+  <text x="270" y="290" text-anchor="middle" font-size="10.5" opacity="0.72">step/end</text>
+  <rect class="pane" x="550" y="208" width="160" height="104" rx="2"></rect>
+  <text x="630" y="234" text-anchor="middle" font-size="13.5">⑦ 这一轮结束</text>
+  <text x="630" y="258" text-anchor="middle" font-size="10.5" opacity="0.72">turn/end 记下原因</text>
+  <text x="630" y="274" text-anchor="middle" font-size="10.5" opacity="0.72">还有排队的消息</text>
+  <text x="630" y="290" text-anchor="middle" font-size="10.5" opacity="0.72">就开启下一轮</text>
+  <line x1="172" y1="72" x2="186" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <line x1="352" y1="72" x2="366" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <line x1="532" y1="72" x2="546" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <text x="540" y="13" text-anchor="middle" font-size="10.5">没有工具调用</text>
+  <line x1="450" y1="126" x2="450" y2="204" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <text x="458" y="170" font-size="10.5">有工具调用</text>
+  <line x1="368" y1="260" x2="354" y2="260" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <line x1="270" y1="206" x2="270" y2="128" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <text x="278" y="170" font-size="10.5">下一步</text>
+  <line x1="630" y1="126" x2="630" y2="204" stroke="currentColor" stroke-width="1.3" marker-end="url(#dst-ar)"></line>
+  <text x="638" y="170" font-size="10.5">结束</text>
+</svg>

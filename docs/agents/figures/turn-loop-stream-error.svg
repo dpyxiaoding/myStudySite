@@ -1,0 +1,43 @@
+<!-- 回合循环与中断 · 三家差异：回复写到一半出错，三家怎么处理。由 turn-loop.md 引用；文件里不要留空行，否则 Markdown 会把图拆坏 -->
+<svg viewBox="0 0 720 300" role="img" aria-label="模型的一次回复写完了一段文字和工具调用 A，写到工具调用 B 时连接断了。Claude Code 保留文字和 A，执行 A，不重发请求，带着 A 的结果接着跑；codex 保留文字和 A，A 在出错前已经开跑，等它跑完后用新历史重试；dsh 整条回复作废，A 没跑过，同一步原样重发">
+  <text x="10" y="18" font-size="12">模型的一次回复，写到工具调用 B 时连接断了：</text>
+  <rect class="pane" x="120" y="30" width="170" height="34" rx="2"></rect>
+  <text x="205" y="52" text-anchor="middle" font-size="11.5">一段文字</text>
+  <rect class="pane" x="290" y="30" width="150" height="34" rx="2"></rect>
+  <text x="365" y="52" text-anchor="middle" font-size="11.5">工具调用 A</text>
+  <rect class="ghost" x="440" y="30" width="140" height="34" rx="2"></rect>
+  <text x="510" y="52" text-anchor="middle" font-size="11.5" opacity="0.72">工具调用 B（半截）</text>
+  <text class="warn" x="596" y="52" font-size="12">✕ 断了</text>
+  <text x="225" y="94" text-anchor="middle" font-size="11" opacity="0.72">文字和 A</text>
+  <text x="420" y="94" text-anchor="middle" font-size="11" opacity="0.72">工具 A</text>
+  <text x="615" y="94" text-anchor="middle" font-size="11" opacity="0.72">接下来</text>
+  <text x="10" y="132" font-size="12.5">Claude Code</text>
+  <rect class="pane" x="130" y="106" width="190" height="50" rx="2"></rect>
+  <text x="225" y="135" text-anchor="middle" font-size="10.5">保留，丢掉半截的 B</text>
+  <rect class="pane" x="325" y="106" width="190" height="50" rx="2"></rect>
+  <text x="420" y="127" text-anchor="middle" font-size="10.5">执行</text>
+  <text x="420" y="143" text-anchor="middle" font-size="10.5" opacity="0.72">何时开始，文档没写</text>
+  <rect class="pane" x="520" y="106" width="190" height="50" rx="2"></rect>
+  <text x="615" y="127" text-anchor="middle" font-size="10.5">不重发，带着 A 的结果接着跑</text>
+  <text x="615" y="143" text-anchor="middle" font-size="10.5" opacity="0.72">界面提示回复可能不完整</text>
+  <text x="10" y="190" font-size="12.5">codex</text>
+  <rect class="pane" x="130" y="164" width="190" height="50" rx="2"></rect>
+  <text x="225" y="193" text-anchor="middle" font-size="10.5">保留，丢掉半截的 B</text>
+  <rect class="pane" x="325" y="164" width="190" height="50" rx="2"></rect>
+  <text x="420" y="185" text-anchor="middle" font-size="10.5">出错前就已开跑</text>
+  <text x="420" y="201" text-anchor="middle" font-size="10.5" opacity="0.72">等它跑完，结果记进历史</text>
+  <rect class="pane" x="520" y="164" width="190" height="50" rx="2"></rect>
+  <text x="615" y="185" text-anchor="middle" font-size="10.5">用更新后的历史重试</text>
+  <text x="615" y="201" text-anchor="middle" font-size="10.5" opacity="0.72">计入重试次数</text>
+  <text x="10" y="248" font-size="12.5">dsh</text>
+  <rect class="pane pane-us" x="130" y="222" width="190" height="50" rx="2"></rect>
+  <text class="hl" x="225" y="243" text-anchor="middle" font-size="10.5">整条作废</text>
+  <text x="225" y="259" text-anchor="middle" font-size="10.5" opacity="0.72">只留作记录，不进历史</text>
+  <rect class="pane pane-us" x="325" y="222" width="190" height="50" rx="2"></rect>
+  <text class="hl" x="420" y="243" text-anchor="middle" font-size="10.5">没跑过</text>
+  <text x="420" y="259" text-anchor="middle" font-size="10.5" opacity="0.72">回复全部成功才执行工具</text>
+  <rect class="pane pane-us" x="520" y="222" width="190" height="50" rx="2"></rect>
+  <text class="hl" x="615" y="243" text-anchor="middle" font-size="10.5">这一步原样重发</text>
+  <text x="615" y="259" text-anchor="middle" font-size="10.5" opacity="0.72">计入重试次数</text>
+  <text x="360" y="292" text-anchor="middle" font-size="10.5" opacity="0.72">三家的目标一样：已经执行过的工具，不能因为重试再执行一遍</text>
+</svg>

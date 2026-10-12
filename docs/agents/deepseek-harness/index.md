@@ -31,6 +31,7 @@ deepseek-harness（简称 dsh）是 DeepSeek 开源的智能体框架。它的�
 
 按功能简介的清单逐项介绍：
 
-1. [上下文管理](/agents/deepseek-harness/context)
+1. [回合循环与中断](/agents/deepseek-harness/turn-loop)
+2. [上下文管理](/agents/deepseek-harness/context)
 
 其余各项陆续补上，顺序和功能简介一致。

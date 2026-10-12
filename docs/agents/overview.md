@@ -54,7 +54,7 @@ toc:
 
 <small>难点</small> 骨架一句话说得完，难在缝隙里。一个「回合」怎么算（用户敲一次回车，还是模型调一次工具），决定了「最多跑几轮」这道闸拦在哪里；用户中途插的话必须落在合适的边界上，否则模型会看到一份前后矛盾的历史；按下 Esc 时，取消信号要按正确的顺序传给在飞的请求、在跑的工具和在等的审批；「停下」有跑完、被叫停、预算用完、出错、原地打转好几种，事后要分得清。
 
-延伸阅读：[回合循环与中断](/agents/turn-loop)
+延伸阅读：[Claude Code](/agents/claude-code/turn-loop)、[codex](/agents/codex/turn-loop)、[deepseek-harness](/agents/deepseek-harness/turn-loop) 各自的回合循环与中断，[三家差异](/agents/turn-loop)
 
 ### 模型接入
 

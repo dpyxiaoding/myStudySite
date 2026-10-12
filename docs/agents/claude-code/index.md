@@ -33,6 +33,7 @@ Claude Code 是 Anthropic 的编程智能体：读代码、改文件、跑命令
 
 按功能简介的清单逐项介绍：
 
-1. [上下文管理](/agents/claude-code/context)
+1. [回合循环与中断](/agents/claude-code/turn-loop)
+2. [上下文管理](/agents/claude-code/context)
 
 其余各项陆续补上，顺序和功能简介一致。
